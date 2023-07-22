@@ -13,6 +13,7 @@ body{
 :root{
     --grey:#dadce0;
     --blue:#1a73e8;
+    --darkblue:#175bb4;
 }
 
 .form_parent{
@@ -25,7 +26,7 @@ body{
 }
 .form_box{
     width: 30%;
-    height: 65vh;
+    height: 70%;
     border: 1px solid var(--grey);
     box-sizing: border-box;
     border-radius: 10px;
@@ -86,6 +87,9 @@ input:placeholder{
     text-align: center;
     border-radius: 5px;
     padding: 0.5rem 0.25rem;
+}
+.btn-signin:hover{
+    background-color:var(--darkblue);
 }
 .create-account{
     margin-top: 2%;
