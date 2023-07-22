@@ -6,6 +6,7 @@ body{
 }
 *{
     margin: 0;
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
     
 }
 
@@ -40,14 +41,30 @@ body{
     height: 10vh;
 }
 .form_box_title{
-    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+   
     font-weight: 300;
     font-size:x-large;
     margin-top: 5%;
 }
 .form_box_sub_title{
-    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
     font-weight: 300;
     font-size:medium;
     margin-top: 2%;
+}
+input{
+    margin-top: 2%;
+    width: 70%;
+    padding: 10px;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.email{
+margin-top: 10%;
+}
+
+input:placeholder{
+    color: var(--grey);
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
 }
