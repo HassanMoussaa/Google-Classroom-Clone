@@ -2,4 +2,52 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    width: 100%;
+}
+*{
+    margin: 0;
+    
+}
+
+:root{
+    --grey:#dadce0;
+}
+
+.form_parent{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form_box{
+
+    width: 30%;
+    height: 60vh;
+    border: 1px solid var(--grey);
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 7%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo{
+    padding-top: 4%;
+    width: 7vw;
+    height: 10vh;
+}
+.form_box_title{
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+    font-weight: 300;
+    font-size:x-large;
+    margin-top: 5%;
+}
+.form_box_sub_title{
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+    font-weight: 300;
+    font-size:medium;
+    margin-top: 2%;
 }
