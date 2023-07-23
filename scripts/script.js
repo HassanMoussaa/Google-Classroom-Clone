@@ -44,8 +44,16 @@ pages.page_signup = function(){
             return false
           }
     }
-
- 
+    
+    function handleRadioChange(){
+        let answer
+        const radio = document.getElementsByName("option")
+        for(let i=0;i<2;i++){
+            if (radio[i].checked)
+            return(radio[i].value)
+        }
+  
+    }
       const btn = document.getElementById("btn-signup")
       let err = document.getElementById("error")
 
@@ -57,6 +65,7 @@ pages.page_signup = function(){
         const password = document.getElementById("password").value
         
       if (isValidEmail(email)){
+        console.log(handleRadioChange());
         err.innerText=""
         if(isValidPassword(password)){
             err.innerText=""
@@ -66,7 +75,15 @@ pages.page_signup = function(){
                     err.innerText=""
                     if(isNotEmpty(last_name)){
                         err.innerText=""
-                        
+                        data = new FormData
+                        data.append("email",email)
+                        data.append("password",password)
+                        data.append("first_name",first_name)
+                        data.append("last_name",last_name)
+                        data.append("phone_number",phone_number)
+
+
+
 
 
 
@@ -103,9 +120,6 @@ pages.page_signin = function () {
 
 
     })
-
-
-
 }
 pages.loadFor = (page) => {
     eval("pages.page_" + page + "();")
