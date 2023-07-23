@@ -87,19 +87,16 @@ pages.page_signup = function(){
                             data.append("image_path","")
                             data.append("user_type",user_type)
 
-                            try{
-                                 fetch("http://localhost/googleclone/Google-Classroom-Clone-BE/signup.php ", {
-                                    method: "POST",
-                                    body: data
-                                  }).then((kill)=>{
-                                    console.log(kill)
-                                  })
-                                } catch (error) {
-                                  console.log(error)
-                                }
-                              
-                    
-    
+                                 axios.post("http://localhost/googleclone/Google-Classroom-Clone-BE/signup.php ",data)
+                                  .then((response) => {
+                                    console.log( response.data);
+                                    if(response.data.status="failed")
+                                    err.innerText="Email or phone number already exist"
+                                    else{
+                                        window.open("../pages/created_successfully.html")
+                                    }
+                                    })
+
 
                         }else(err.innerText="choose a type")
 
