@@ -14,6 +14,8 @@ body{
     margin-top: 1%;
     margin-left: 1%;
     align-items: center;
+    border-bottom: 1px solid rgb(95,99,104,0.1);
+    
 }
 .nav-left{
     display: flex;
@@ -87,6 +89,9 @@ body{
     border-radius: 30px;
     transition: ease 0.2;
 }
+hr{
+    border: 1px solid rgb(95,99,104);
+}
 
 .google-container img{
     max-height: 100%;
@@ -100,3 +105,34 @@ body{
     font-weight: 500;
     margin-bottom: 12%;
 }
+
+
+  
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -350px; 
+    width: 350px;
+    height: 100%;
+    background-color: #f9f9f9;
+    transition: left 0.3s ease;
+    box-shadow: 1px;
+  }
+  
+.side-menu ul {
+    list-style: none;
+    padding: 20px;
+  }
+  
+.side-menu ul li {
+    margin-bottom: 10px;
+  }
+  
+.nav-right ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  #side-menu.active {
+    left: 0; /* Show the menu */
+  }

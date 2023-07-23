@@ -116,9 +116,27 @@ pages.page_signin = function () {
 
     })
 }
+pages.page_index=function (){
+  const menuButton = document.getElementById('menu');
+  const sideMenu = document.getElementById('side-menu');
+
+menuButton.addEventListener('click', () => {
+  sideMenu.classList.toggle('active');
+});
+document.addEventListener('click', (event) => {
+  const targetElement = event.target;
+  if (!sideMenu.contains(targetElement) && targetElement !== menuButton) {
+    sideMenu.classList.remove('active');
+  }
+});
+
+
+
+}
 pages.loadFor = (page) => {
     eval("pages.page_" + page + "();")
 }
+
 
 
 
