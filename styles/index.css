@@ -4,6 +4,13 @@ body{
     width: 100%;
     height: auto;
 }
+
+:root{
+    --grey:#dadce0;
+    --blue:#1a73e8;
+    --darkblue:#175bb4;
+}
+
 *{
     margin: 0;
     font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
@@ -90,7 +97,7 @@ body{
     transition: ease 0.2;
 }
 hr{
-    border: 1px solid rgb(95,99,104);
+    border: 1px solid rgb(95,99,104,0.1);
 }
 
 .google-container img{
@@ -106,9 +113,21 @@ hr{
     margin-bottom: 12%;
 }
 
-
-  
+.last{
+    margin-bottom: 5%;
+}
+.menu-subtitle{
+    margin-top: 4%;
+    color: #5f6368;
+    font-size: large;
+    font-weight: 500;
+    font-weight: 500;
+    margin-left: 4%;
+    margin-bottom: 4%;
+}
 .side-menu {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: -350px; 
@@ -137,8 +156,41 @@ hr{
     background-color: white;
     box-shadow: 5px 2px 5px #aaaaaa;
   }
-  .side-menu.inactive {
+.side-menu.inactive {
     left: -360px; 
     background-color: white;
     box-shadow: 5px 2px 5px #aaaaaa;
   }
+
+.side-menu-child{
+    margin-top: 2%;
+    margin-right: 8%;
+    height: 10vh;
+    display: flex;
+    align-items:center;
+    gap: 30px;
+    border-radius: 0px 30px 30px 0px;
+    cursor: pointer;
+
+  }
+  .side-menu-child:hover {
+    background-color: #e3eefc;
+  }
+
+
+  .side-menu-child span{
+    margin-top: 2%;
+    color: #5f6368;
+    font-size: large;
+    font-weight: 500;
+  }
+.home-container{
+    width: 50px;
+    height:50px;
+}
+.home-container img{
+    max-width: 100%;
+    max-height: 100%;
+    scale: 0.5;
+    margin-left: 5%;
+}
