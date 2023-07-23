@@ -128,13 +128,14 @@ hr{
 .side-menu {
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: -350px; 
     width: 350px;
     height: 100%;
     transition: left 0.3s ease;
     box-shadow: 1px;
+    z-index:66 ;
   }
   
 .side-menu ul {
@@ -235,7 +236,7 @@ hr{
     z-index: 2;
   }
 
-.test{
+.title{
     color: white;
     position: absolute;
     left: 0;
