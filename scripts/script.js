@@ -49,7 +49,7 @@ pages.page_signup = function(){
         let answer
         const radio = document.getElementsByName("option")
         for(let i=0;i<2;i++){
-            if (radio[i].checked)
+            if (radio[i].checked){}
             return(radio[i].value)
         }
   
@@ -65,7 +65,6 @@ pages.page_signup = function(){
         const password = document.getElementById("password").value
         
       if (isValidEmail(email)){
-        console.log(handleRadioChange());
         err.innerText=""
         if(isValidPassword(password)){
             err.innerText=""
@@ -75,20 +74,34 @@ pages.page_signup = function(){
                     err.innerText=""
                     if(isNotEmpty(last_name)){
                         err.innerText=""
-                        data = new FormData
-                        data.append("email",email)
-                        data.append("password",password)
-                        data.append("first_name",first_name)
-                        data.append("last_name",last_name)
-                        data.append("phone_number",phone_number)
+                        if(handleRadioChange()){
+                            const user_type = handleRadioChange()
+                            console.log(user_type)
+                            err.innerText=""
+                            data = new FormData()
+                            data.append("email",email)
+                            data.append("password",password)
+                            data.append("first_name",first_name)
+                            data.append("last_name",last_name)
+                            data.append("phone_number",phone_number)
+                            data.append("image_path","")
+                            data.append("user_type",user_type)
 
+                            try{
+                                 fetch("http://localhost/googleclone/Google-Classroom-Clone-BE/signup.php ", {
+                                    method: "POST",
+                                    body: data
+                                  }).then((kill)=>{
+                                    console.log(kill)
+                                  })
+                                } catch (error) {
+                                  console.log(error)
+                                }
+                              
+                    
+    
 
-
-
-
-
-
-
+                        }else(err.innerText="choose a type")
 
                     }else err.innerText="last name is empty"
                 }else err.innerText="first name is empty"
