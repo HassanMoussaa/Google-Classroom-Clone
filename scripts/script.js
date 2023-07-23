@@ -2,27 +2,12 @@ const pages = {}
 
 pages.base_url = "http://localhost/googleclone/Google-Classroom-Clone-BE/";
 
+pages.page_success = function(){
+    const success = document.getElementById("btn-success")
+    console.log(success)
+    setTimeout(success.addEventListener("click",  window.location.href="../pages/signin.html"))
 
-pages.getAPI = async (url) =>{
-    try{
-        return await axios(url)
-    }catch(error){
-        pages.print_message("Error from GET API: " + error)
-    }
 }
-
-pages.postAPI = async (api_url, api_data) => {
-    try{
-        return await axios.post(
-            api_url,
-            api_data
-        );
-    }catch(error){
-        pages.print_message("Error from Linking (POST)" + error)
-    }
-}
-
-
 
 pages.page_signup = function(){
     function isValidEmail(email) {
@@ -87,13 +72,13 @@ pages.page_signup = function(){
                             data.append("image_path","")
                             data.append("user_type",user_type)
 
-                                 axios.post("http://localhost/googleclone/Google-Classroom-Clone-BE/signup.php ",data)
+                                 axios.post(`${this.base_url}signup.php`,data)
                                   .then((response) => {
                                     console.log( response.data);
-                                    if(response.data.status="failed")
+                                    if(response.data.status =="failed")
                                     err.innerText="Email or phone number already exist"
                                     else{
-                                        window.open("../pages/created_successfully.html")
+                                        window.location.href="../pages/created_successfully.html"
                                     }
                                     })
 

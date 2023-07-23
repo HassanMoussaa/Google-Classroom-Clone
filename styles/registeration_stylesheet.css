@@ -1,13 +1,11 @@
 body{
     margin: 0;
     padding: 0;
-    
     width: 100%;
 }
 *{
     margin: 0;
     font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
-    
 }
 
 :root{
@@ -23,6 +21,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 .form_box{
     width: 30%;
