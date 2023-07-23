@@ -10,7 +10,7 @@ body{
 }
 .nav{
     display: flex;
-    width: 100%;
+    width: 98%;
     margin-top: 1%;
     margin-left: 1%;
     align-items: center;
@@ -114,7 +114,6 @@ hr{
     left: -350px; 
     width: 350px;
     height: 100%;
-    background-color: #f9f9f9;
     transition: left 0.3s ease;
     box-shadow: 1px;
   }
@@ -133,6 +132,13 @@ hr{
     text-decoration: none;
   }
   
-  #side-menu.active {
-    left: 0; /* Show the menu */
+.side-menu.active {
+    left: 0; 
+    background-color: white;
+    box-shadow: 5px 2px 5px #aaaaaa;
+  }
+  .side-menu.inactive {
+    left: -360px; 
+    background-color: white;
+    box-shadow: 5px 2px 5px #aaaaaa;
   }

@@ -126,7 +126,7 @@ menuButton.addEventListener('click', () => {
 document.addEventListener('click', (event) => {
   const targetElement = event.target;
   if (!sideMenu.contains(targetElement) && targetElement !== menuButton) {
-    sideMenu.classList.remove('active');
+    sideMenu.classList.toggle('inactive');
   }
 });
 
