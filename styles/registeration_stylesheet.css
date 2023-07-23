@@ -118,6 +118,9 @@ input:placeholder{
     border-radius: 5px;
     padding: 0.5rem 0.25rem;
 }
+.success{
+    align-self: center;
+}
 .btn-signin:hover{
     background-color:var(--darkblue);
 }
