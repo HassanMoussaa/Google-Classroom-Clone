@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/registeration_stylesheet.css">
-    <title>Document</title>
+    <title>Signup</title>
 </head>
 <body>
     <body>
@@ -15,9 +15,10 @@
                 <p class="form_box_sub_title">Google create Account</p>
                 <input class="input email" type="text" name="first_name" id="first_name" placeholder="First name">
                 <input type="text" name="last_name" id="last_name" placeholder="Last name">
-                <input type="text" name="phone_number" id="phone_number" placeholder="Phone_number">
+                <input type="text" name="phone_number" id="phone_number" placeholder="Phone number">
                 <input class="input" type="text" name="email" id="email" placeholder="Email">
                 <input type="password" name="password" id="password" placeholder="Password">
+                <label id="error" class="error"></label>
                 <a href="../pages/signin.html" class="create-account" id="signin">Already have an account?</a>
                 <div class="btn-container">
                     <button class="btn-signin" id="btn-signup"> Signup</button>
@@ -26,5 +27,12 @@
             </div>
             
         </section>
-</body>
+
+        <script src="../scripts/axios.js"></script>
+        <script src="../scripts/script.js"></script>
+        <script>
+            pages.loadFor("signup")
+        </script>
+
+    </body>
 </html>

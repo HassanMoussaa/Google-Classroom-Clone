@@ -26,7 +26,7 @@ body{
 }
 .form_box{
     width: 30%;
-    height: 70%;
+    height: 75%;
     border: 1px solid var(--grey);
     box-sizing: border-box;
     border-radius: 10px;
@@ -37,7 +37,7 @@ body{
     align-items: center;
 }
 .signup{
-    height: 80%;
+    height: 85%;
 }
 .logo{
     padding-top: 4%;
@@ -106,7 +106,16 @@ input:placeholder{
     font-size: small;
     align-self: flex-start;
     margin-left: 12%;
-
+}
+label{
+    margin-top: 2%;
+    font-size: medium;
+    align-self: flex-start;
+    margin-left: 12%;
+}
+.error{
+    color: red;
+    margin-left: 14%;
 }
 a:link{
     text-decoration: none;

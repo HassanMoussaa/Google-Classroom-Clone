@@ -14,26 +14,17 @@
             <p class="form_box_sub_title">To continue to Google Classroom </p>
             <input class="input email" type="text" name="email" id="email" placeholder="Email or phone">
             <input type="password" name="password" id="password" placeholder="Password">
+            <label id="error" class="error"></label>
             <a href="../pages/forgot_password.html" class="create-account" id="forgot_password">Forgot password</a>
-            <a href="../pages/signup.html" class="create-account " id="create_account">create account</a>
-            <section class="form_parent">
-        <div class="form_box">
-            <img src="../assets/logo.svg" alt="logo" class="logo">
-            <p class="form_box_title">Sign in</p>
-            <p class="form_box_sub_title">To continue to Google Classroom </p>
-            <input class="input email" type="text" name="email" id="email" placeholder="Email or phone">
-            <input type="password" name="password" id="password" placeholder="Password">
-            <a href="../pages/password_change.html" class="create-account" id="forgot_password">Forgot password</a>
             <a href="../pages/signup.html" class="create-account " id="create_account">create account</a>
             <div class="btn-container">
                 <button class="btn-signin" id="btn-signin"> Signin</button>
             </div>
         </div>
-        
     </section>
-        </div>
-        
-    </section>
-    
+    <script src="../scripts/script.js"></script>
+    <script>
+        pages.loadFor("signin")
+    </script>
 </body>
 </html>
