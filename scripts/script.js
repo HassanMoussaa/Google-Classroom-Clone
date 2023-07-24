@@ -157,6 +157,31 @@ pages.page_index=function (){
 
 
 
+document.addEventListener("DOMContentLoaded", getClasses);
+
+   let classesArray = [];
+   const apiEndpoint = "get_student_classes.php";
+   const fullURL = this.base_url + apiEndpoint;
+
+    // Get Classes
+    function getClasses() {
+      axios.get(fullURL)
+    .then((response) => {
+      console.log(response)
+      classesArray = response.data;
+      console.log(classesArray)
+      
+      // displayClasses();
+    })
+    .catch((error) => console.error("Error fetching classes:", error));
+}
+
+
+
+
+
+
+
 
 
 }
