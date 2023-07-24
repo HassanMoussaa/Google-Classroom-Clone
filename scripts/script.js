@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", getClasses);
 
    let classesArray = [];
    const user_id=window.localStorage.getItem('id')
+   console.log(user_id)
    const apiEndpoint = `get_student_classes.php?id=${user_id}`;
    const fullURL = this.base_url + apiEndpoint;
 
@@ -170,12 +171,42 @@ document.addEventListener("DOMContentLoaded", getClasses);
       axios.get(fullURL)
     .then((response) => {
       console.log(response)
-      classesArray = response.data;
-      console.log(classesArray)
+      console.log(response.data)
+      classesArray = response.data.classes;
+      displayClasses();
       
-      // displayClasses();
+     
     })
     .catch((error) => console.error("Error fetching classes:", error));
+}
+
+
+function displayClasses() {
+  const classContainer = document.querySelector(".classes-container");
+  classContainer.innerHTML = "";
+
+  classesArray.forEach((classObj) => {
+    const classDiv = document.createElement("div");
+    classDiv.classList.add("class");
+
+    const classHeader = document.createElement("div");
+    classHeader.classList.add("class-header");
+
+    classHeader.innerHTML = `
+      <div class="layer"></div>
+      <img class="image-overlay" src="../assets/flowers.jpg" alt="" />
+      <div class="text-overlay">
+        <p class="title">${classObj.name}</p>
+        <p class="section">${classObj.section}</p>
+        <p class="subject">${classObj.subject}</p>
+        <p class="room">${classObj.room}</p>
+      </div>
+    `;
+
+    classDiv.appendChild(classHeader);
+    classContainer.appendChild(classDiv);
+  })
+
 }
 
 
