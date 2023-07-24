@@ -111,8 +111,28 @@ pages.page_signin = function () {
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
 
-        
+        data = new FormData();
+        data.append("input",email)
+        data.append("password",password)
 
+        axios.post(`${this.base_url}sign_in.php`,data)
+        .then((response) => {
+         console.log( response.data);
+         if(response.data.status=="Email/Phone number and/or password is incorrect" || response.data.status=="Email/Phone number not found")
+          err.innerText="incorrect credentials"
+          else{
+            err.innerText=""
+            window.localStorage.setItem(
+              'id',response.data.id
+            )
+            window.localStorage.setItem(
+              'user_type_id',response.data.user_type_id
+            )
+            window.location.href="../pages/index.html"
+         }
+         })
+
+  
 
     })
 }
@@ -128,6 +148,7 @@ pages.page_index=function (){
     sideMenu.classList.toggle('inactive');
   }
 });
+
 
 
 
