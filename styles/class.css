@@ -20,12 +20,23 @@
     height: 20vh;
     margin-left: 20%;
 }
-.test{
-    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+.middle-title{
+    display: flex;
+    font-size: large;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding-top: 5%;
+    padding-top: 7.6%;
     padding-bottom: 5%;
     width: 25%;
-    height: 20%;
+    height: 25%;
+    cursor: pointer;
+}
+.middle-title:hover{
     background-color: rgb(95,99,104,0.1);
+}
+.middle-title:active{
+    border-bottom:5px solid black ;
+    border-radius:10px
 }

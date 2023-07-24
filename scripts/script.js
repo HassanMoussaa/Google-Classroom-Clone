@@ -199,6 +199,9 @@ pages.page_class = function(){
     sideMenu.classList.toggle('inactive');
   }
 });
+function addBorderBottom(element) {
+  element.classList.toggle('active');
+}
 }
 pages.loadFor = (page) => {
     eval("pages.page_" + page + "();")
