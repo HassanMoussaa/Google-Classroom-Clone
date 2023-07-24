@@ -172,6 +172,24 @@ pages.page_forgot_password = function(){
 
 }
 pages.page_token=function(){
+  const btn = document.getElementById("submit")
+  const err = document.getElementById("error")
+
+  
+  btn.addEventListener("click",()=>{
+    const code = document.getElementById("token").value
+    data = new FormData()
+    data.append("code",code)
+    axios.post(`${this.base_url}validate_code.php`,data)
+    .then((response)=>{
+      if(response.data.status=="success")
+      err.innerText=response.data.password
+      else
+      err.innerText="wrong token"
+      
+    })
+  })
+
 
 }
 pages.page_index=function (){
