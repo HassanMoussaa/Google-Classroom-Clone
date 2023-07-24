@@ -161,7 +161,6 @@ document.addEventListener("DOMContentLoaded", getClasses);
 
    let classesArray = [];
    const user_id=window.localStorage.getItem('id')
-   console.log(user_id)
    const apiEndpoint = `get_student_classes.php?id=${user_id}`;
    const fullURL = this.base_url + apiEndpoint;
 
@@ -189,11 +188,11 @@ function displayClasses() {
     const classDiv = document.createElement("div");
     classDiv.classList.add("class");
 
-    const classHeader = document.createElement("div");
-    classHeader.classList.add("class-header");
+    // const classHeader = document.createElement("div");
+    // classHeader.classList.add("class-header");
 
-    classHeader.innerHTML = `
-      <div class="layer"></div>
+    classDiv.innerHTML = `
+    <div class="class-header"> 
       <img class="image-overlay" src="../assets/flowers.jpg" alt="" />
       <div class="text-overlay">
         <p class="title">${classObj.name}</p>
@@ -201,9 +200,10 @@ function displayClasses() {
         <p class="subject">${classObj.subject}</p>
         <p class="room">${classObj.room}</p>
       </div>
+      </div>
     `;
 
-    classDiv.appendChild(classHeader);
+    // classDiv.appendChild(classHeader);
     classContainer.appendChild(classDiv);
   })
 
