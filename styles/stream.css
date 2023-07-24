@@ -1,0 +1,42 @@
+* {
+  font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+}
+.nav-left-class {
+  display: flex;
+  width: 20%;
+  height: 10vh;
+}
+.nav-right-class {
+  display: flex;
+  width: 20%;
+  height: 10vh;
+  justify-content: flex-end;
+  margin-right: 2%;
+  gap: 20px;
+}
+.nav-middle-class {
+  display: flex;
+  width: 60%;
+  height: 20vh;
+  margin-left: 20%;
+}
+.middle-title {
+  display: flex;
+  font-size: large;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 7.6%;
+  padding-bottom: 5%;
+  width: 25%;
+  height: 25%;
+  cursor: pointer;
+}
+.middle-title:hover {
+  background-color: rgb(95, 99, 104, 0.1);
+}
+.middle-title:active {
+  border-bottom: 5px solid black;
+  border-radius: 10px;
+}

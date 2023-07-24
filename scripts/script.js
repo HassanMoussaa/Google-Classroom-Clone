@@ -34,10 +34,10 @@ pages.page_signup = function(){
         let answer
         const radio = document.getElementsByName("option")
         for(let i=0;i<2;i++){
-            if (radio[i].checked){}
+            if (radio[i].checked){
             return(radio[i].value)
         }
-  
+      }
     }
       const btn = document.getElementById("btn-signup")
       let err = document.getElementById("error")
@@ -102,6 +102,63 @@ pages.page_signup = function(){
 
 
 }
+
+pages.page_forgot_password = function(){
+  function move(){
+    window.location.href="../pages/code.html" 
+   }
+  const err = document.getElementById("error")
+  const btn = document.getElementById("btn-retrieve")
+  btn.addEventListener("click",()=>{
+    const email = document.getElementById("email").value
+    data = {"email":`${email}`}
+    // data.append("email",email)
+    axios.post(`${this.base_url}forget_password_init.php`,data)
+    .then((response)=>{
+      if(response.data.message == "no such email")
+      err.innerText="invalid email"
+      else{
+        err.setAttribute("class","success")
+        err.innerText=`Password reset code sent to your email`
+        setTimeout(move,3000)
+     
+        console.log(response.data.message)
+     
+        
+      }
+    })
+
+  })
+
+}
+
+
+
+pages.page_code=function(){
+  const btn = document.getElementById("submit")
+  const err = document.getElementById("error")
+
+  
+  btn.addEventListener("click",()=>{
+    const code = document.getElementById("code").value
+    data = {"code":`${code}`}
+    // data.append("code",code)
+    axios.post(`${this.base_url}validate_code.php`,data)
+    .then((response)=>{
+      if(response.data.status=="success")
+      err.innerText=response.data.password
+      else
+      err.innerText="wrong code"
+      
+    })
+  })
+
+
+}
+
+
+
+
 pages.page_signin = function () {
 
     const btn = document.getElementById("btn-signin")

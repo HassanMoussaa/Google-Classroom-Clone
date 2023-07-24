@@ -1,160 +1,156 @@
-body{
-    margin: 0;
-    padding: 0;
-    width: 100%;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
-*{
-    margin: 0;
-    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
-}
-
-:root{
-    --grey:#dadce0;
-    --blue:#1a73e8;
-    --darkblue:#175bb4;
+* {
+  margin: 0;
+  font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
 }
 
-.form_parent{
-    width: 100%;
-    height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.form_box{
-    width: 30%;
-    height: 75%;
-    border: 1px solid var(--grey);
-    box-sizing: border-box;
-    border-radius: 10px;
-    margin-bottom: 7%;
-    margin-top: 8%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.signup{
-    height: 95%;
-}
-.logo{
-    padding-top: 4%;
-    width: 7vw;
-    height: 10vh;
-}
-.form_box_title{
-   
-    font-weight: 300;
-    font-size:x-large;
-    margin-top: 5%;
-}
-.form_box_sub_title{
-    font-weight: 300;
-    font-size:medium;
-    margin-top: 2%;
-}
-input{
-    margin-top: 2%;
-    width: 70%;
-    padding: 10px;
-    border: 1px solid var(--grey);
-    border-radius: 4px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    transition: 0.2s ease border-color;
-   
-
-}
-input:focus{
-    outline: none;
-    border:none;
-    border:2px solid var(--blue);
-}
-.email{
-margin-top: 10%;
+:root {
+  --grey: #dadce0;
+  --blue: #1a73e8;
+  --darkblue: #175bb4;
 }
 
-input:placeholder{
-    color: var(--grey);
-    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+.form_parent {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.form_box {
+  width: 30%;
+  border: 1px solid var(--grey);
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-bottom: 7%;
+  margin-top: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signup {
+  height: 95%;
+}
+.logo {
+  padding-top: 4%;
+  width: 7vw;
+  height: 10vh;
+}
+.form_box_title {
+  font-weight: 300;
+  font-size: x-large;
+  margin-top: 5%;
+}
+.form_box_sub_title {
+  font-weight: 300;
+  font-size: medium;
+  margin-top: 2%;
+}
+input {
+  margin-top: 2%;
+  width: 70%;
+  padding: 10px;
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: 0.2s ease border-color;
+}
+input:focus {
+  outline: none;
+  border: none;
+  border: 2px solid var(--blue);
+}
+.email {
+  margin-top: 10%;
 }
 
-.user-type-parent{
-    margin-top: 2%;
-    display: flex;
-    flex-direction: row;
-    align-self: flex-start;
-    justify-content: space-evenly;
-    margin-left: 17%;
-    gap:120px;
-    flex-wrap: wrap;
-    
+input:placeholder {
+  color: var(--grey);
+  font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
 }
-.user-type-child{
-    margin-top: 2%;
-    display: flex;
-    flex-direction: row;
-    align-self: flex-start;
-    gap: 10px;
-    }
 
-.btn-container{
-   align-self: flex-end;
-   margin-top: 6%;
-   margin-right: 7%;
+.user-type-parent {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  justify-content: space-evenly;
+  margin-left: 17%;
+  gap: 120px;
+  flex-wrap: wrap;
 }
-.btn-signin{
-    background-color: var(--blue);
-    color: #f9f9f9;
-    width: 5rem;
-    height: 3rem;
-    cursor: pointer;
-    border: none;
-    font-size: medium;
-    font-weight: 600;
-    text-align: center;
-    border-radius: 5px;
-    padding: 0.5rem 0.25rem;
+.user-type-child {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  gap: 10px;
 }
-.success{
-    align-self: center;
-}
-.btn-signin:hover{
-    background-color:var(--darkblue);
-}
-.create-account{
-    margin-top: 2%;
-    font-size: small;
-    align-self: flex-start;
-    margin-left: 12%;
-}
-label{
-    margin-top: 2%;
-    font-size: medium;
-    align-self: flex-start;
-    margin-left: 12%;
-}
-.error{
-    color: red;
-    margin-left: 14%;
-}
-a:link{
-    text-decoration: none;
-    font-weight: 500;
-    color:var(--blue) ;
-    font-family: "Google Sans",Roboto,Arial,sans-serif;
-    font-size: .875rem;
-    padding: 0.5rem 0.4rem;
-    border-radius: 5px;
-    
-}
-a:visited{
-    text-decoration: none;
-    color:var(--blue) ;
-    
-}
-a:hover{
-    background-color: #e3eefc;
 
+.btn-container {
+  align-self: flex-end;
+  margin-top: 6%;
+  margin-right: 7%;
+  padding-bottom: 5%;
+}
+.btn-signin {
+  background-color: var(--blue);
+  color: #f9f9f9;
+  width: 5rem;
+  height: 3rem;
+  cursor: pointer;
+  border: none;
+  font-size: medium;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0.5rem 0.25rem;
+}
+.success {
+  align-self: center;
+}
+.btn-signin:hover {
+  background-color: var(--darkblue);
+}
+.create-account {
+  margin-top: 2%;
+  font-size: small;
+  align-self: flex-start;
+  margin-left: 12%;
+}
+label {
+  margin-top: 2%;
+  font-size: medium;
+  align-self: flex-start;
+  margin-left: 12%;
+}
+.error {
+  color: red;
+  margin-left: 14%;
+}
+.success {
+  color: rgb(65, 189, 61);
+  margin-right: 22%;
+}
+a:link {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--blue);
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.4rem;
+  border-radius: 5px;
+}
+a:visited {
+  text-decoration: none;
+  color: var(--blue);
+}
+a:hover {
+  background-color: #e3eefc;
 }
