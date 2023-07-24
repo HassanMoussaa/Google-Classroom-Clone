@@ -30,7 +30,6 @@ pages.page_signup = function(){
     }
   
     function handleRadioChange(){
-        let answer
         const radio = document.getElementsByName("option")
         for(let i=0;i<2;i++){
             if (radio[i].checked){
@@ -41,7 +40,7 @@ pages.page_signup = function(){
     }
 
     function move(){
-      window.location.href="../pages/sign.html" 
+      window.location.href="../pages/signin.html" 
      }
       const btn = document.getElementById("btn-signup")
       let err = document.getElementById("error")
@@ -52,7 +51,6 @@ pages.page_signup = function(){
         const phone_number = document.getElementById("phone_number").value
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
-        const radio = document.getElementsByName("option")
  
         
       if (isValidEmail(email)){
@@ -86,6 +84,7 @@ pages.page_signup = function(){
                                     else{
                                       err.setAttribute("class","success")
                                       err.innerText="created successfully!"
+                                      setTimeout(move,2000)
                                        
                                     }
                                     })
@@ -160,12 +159,19 @@ pages.page_forgot_password = function(){
       err.innerText="invalid email"
       else{
         err.setAttribute("class","success")
-        err.innerText="Password reset token sent to your email"
-        setTimeout(move ,2000)
+        err.innerText=`Password reset token sent to your email`
+        setTimeout(move,3000)
+     
+        console.log(response.data.message)
+     
+        localStorage.setItem("token",response.data.token)
       }
     })
 
   })
+
+}
+pages.page_token=function(){
 
 }
 pages.page_index=function (){
