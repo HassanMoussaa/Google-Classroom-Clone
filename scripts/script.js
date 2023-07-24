@@ -1,6 +1,6 @@
 const pages = {}
 
-pages.base_url = "http://localhost/googleclone/Google-Classroom-Clone-BE/";
+pages.base_url = "http://localhost/googleclone/Google-Classroom-Clone-BE/apis/";
 
 pages.page_success = function(){
     const success = document.getElementById("btn-success")
@@ -136,6 +136,11 @@ pages.page_signin = function () {
 
     })
 }
+
+
+
+
+
 pages.page_index=function (){
   const menuButton = document.getElementById('menu');
   const sideMenu = document.getElementById('side-menu');
@@ -148,6 +153,64 @@ pages.page_index=function (){
     sideMenu.classList.toggle('inactive');
   }
 });
+
+
+
+
+document.addEventListener("DOMContentLoaded", getClasses);
+
+   let classesArray = [];
+   const user_id=window.localStorage.getItem('id')
+   const apiEndpoint = `get_student_classes.php?id=${user_id}`;
+   const fullURL = this.base_url + apiEndpoint;
+
+    // Get Classes
+    function getClasses() {
+      
+      axios.get(fullURL)
+    .then((response) => {
+      console.log(response)
+      console.log(response.data)
+      classesArray = response.data.classes;
+      displayClasses();
+      
+     
+    })
+    .catch((error) => console.error("Error fetching classes:", error));
+}
+
+
+function displayClasses() {
+  const classContainer = document.querySelector(".classes-container");
+  classContainer.innerHTML = "";
+
+  classesArray.forEach((classObj) => {
+    const classDiv = document.createElement("div");
+    classDiv.classList.add("class");
+
+    // const classHeader = document.createElement("div");
+    // classHeader.classList.add("class-header");
+
+    classDiv.innerHTML = `
+    <div class="class-header"> 
+      <img class="image-overlay" src="../assets/flowers.jpg" alt="" />
+      <div class="text-overlay">
+        <p class="title">${classObj.name}</p>
+        <p class="section">${classObj.section}</p>
+        <p class="subject">${classObj.subject}</p>
+        <p class="room">${classObj.room}</p>
+      </div>
+      </div>
+    `;
+
+    // classDiv.appendChild(classHeader);
+    classContainer.appendChild(classDiv);
+  })
+
+}
+
+
+
 
 
 
