@@ -1,6 +1,6 @@
 const pages = {}
 
-pages.base_url = "http://localhost/googleclone/Google-Classroom-Clone-BE/";
+pages.base_url = "http://localhost/googleclone/Google-Classroom-Clone-BE/apis/";
 
 pages.page_success = function(){
     const success = document.getElementById("btn-success")
@@ -8,7 +8,6 @@ pages.page_success = function(){
     setTimeout(success.addEventListener("click",  window.location.href="../pages/signin.html"))
 
 }
-
 pages.page_signup = function(){
     function isValidEmail(email) {
         const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -135,6 +134,26 @@ pages.page_signin = function () {
   
 
     })
+}
+pages.page_forgot_password = function(){
+  const err = document.getElementById("error")
+  const btn = document.getElementById("btn-retrieve")
+  btn.addEventListener("click",()=>{
+    const email = document.getElementById("email").value
+    data = new FormData()
+    data.append("email",email)
+    axios.post(`${this.base_url}forget_password_init.php`,data)
+    .then((response)=>{
+      if(response.data.message == "no such email")
+      err.innerText="invalid email"
+      else{
+        err.setAttribute("class","success")
+        err.innerText="Password reset token sent to your email"
+      }
+    })
+
+  })
+
 }
 pages.page_index=function (){
   const menuButton = document.getElementById('menu');
