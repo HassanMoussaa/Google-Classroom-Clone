@@ -22,17 +22,18 @@ body{
     margin-left: 1%;
     align-items: center;
     border-bottom: 1px solid rgb(95,99,104,0.1);
+    height: 6rem;
     
 }
 .nav-left{
     display: flex;
     width: 50%;
-    height: 20vh;
+    height: 10vh;
 }
 .nav-right{
     display: flex;
     width: 50%;
-    height: 20vh;
+    height: 10vh;
     justify-content: flex-end;
     margin-right: 2%;
     gap: 20px;
