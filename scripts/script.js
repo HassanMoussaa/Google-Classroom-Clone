@@ -1,6 +1,6 @@
 const pages = {}
 
-pages.base_url = "http://localhost/googleclone/Google-Classroom-Clone-BE/";
+pages.base_url = "http://localhost/googleclone/Google-Classroom-Clone-BE/apis/";
 
 pages.page_success = function(){
     const success = document.getElementById("btn-success")
@@ -160,11 +160,13 @@ pages.page_index=function (){
 document.addEventListener("DOMContentLoaded", getClasses);
 
    let classesArray = [];
-   const apiEndpoint = "get_student_classes.php";
+   const user_id=window.localStorage.getItem('id')
+   const apiEndpoint = `get_student_classes.php?id=${user_id}`;
    const fullURL = this.base_url + apiEndpoint;
 
     // Get Classes
     function getClasses() {
+      
       axios.get(fullURL)
     .then((response) => {
       console.log(response)
