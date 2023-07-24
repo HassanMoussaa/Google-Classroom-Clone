@@ -24,7 +24,6 @@ body{
 }
 .form_box{
     width: 30%;
-    height: 75%;
     border: 1px solid var(--grey);
     box-sizing: border-box;
     border-radius: 10px;
@@ -141,7 +140,7 @@ label{
 }
 .success{
     color: rgb(65, 189, 61);
-    margin-left: 9%;
+    margin-right: 22%;
 }
 a:link{
     text-decoration: none;

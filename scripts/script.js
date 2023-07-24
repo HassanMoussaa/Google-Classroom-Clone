@@ -28,16 +28,21 @@ pages.page_signup = function(){
             return false
           }
     }
-    
+  
     function handleRadioChange(){
         let answer
         const radio = document.getElementsByName("option")
         for(let i=0;i<2;i++){
-            if (radio[i].checked){}
+            if (radio[i].checked){
             return(radio[i].value)
+          }
         }
   
     }
+
+    function move(){
+      window.location.href="../pages/sign.html" 
+     }
       const btn = document.getElementById("btn-signup")
       let err = document.getElementById("error")
 
@@ -47,6 +52,8 @@ pages.page_signup = function(){
         const phone_number = document.getElementById("phone_number").value
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
+        const radio = document.getElementsByName("option")
+ 
         
       if (isValidEmail(email)){
         err.innerText=""
@@ -77,7 +84,9 @@ pages.page_signup = function(){
                                     if(response.data.status =="failed")
                                     err.innerText="Email or phone number already exist"
                                     else{
-                                        window.location.href="../pages/created_successfully.html"
+                                      err.setAttribute("class","success")
+                                      err.innerText="created successfully!"
+                                       
                                     }
                                     })
 
@@ -136,6 +145,9 @@ pages.page_signin = function () {
     })
 }
 pages.page_forgot_password = function(){
+  function move(){
+    window.location.href="../pages/token.html" 
+   }
   const err = document.getElementById("error")
   const btn = document.getElementById("btn-retrieve")
   btn.addEventListener("click",()=>{
@@ -149,6 +161,7 @@ pages.page_forgot_password = function(){
       else{
         err.setAttribute("class","success")
         err.innerText="Password reset token sent to your email"
+        setTimeout(move ,2000)
       }
     })
 
