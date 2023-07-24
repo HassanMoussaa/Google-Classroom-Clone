@@ -136,6 +136,11 @@ pages.page_signin = function () {
 
     })
 }
+
+
+
+
+
 pages.page_index=function (){
   const menuButton = document.getElementById('menu');
   const sideMenu = document.getElementById('side-menu');
