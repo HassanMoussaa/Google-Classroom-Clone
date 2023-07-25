@@ -377,7 +377,7 @@ function displayStreamData(streamDataArray) {
 
 
 // people section for student 
-pages.people_student = function(){
+pages.page_people_student = function(){
     const urlParams = new URLSearchParams(window.location.search);
     const classId = urlParams.get("class_id");
 
