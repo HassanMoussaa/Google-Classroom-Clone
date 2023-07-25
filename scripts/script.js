@@ -361,6 +361,52 @@ pages.loadFor = (page) => {
     eval("pages.page_" + page + "();")
 }
 
+pages_.page_classwork = function(){
+
+  document.addEventListener("DOMContentLoaded", getClasses);
+
+   let assignments_array = [];
+   const user_id=window.localStorage.getItem('id')
+   const apiEndpoint = `get_assignments.php?id=${user_id}`;
+   const fullURL = this.base_url + apiEndpoint;
+
+    // Get Classes
+    function getClasses() {
+      axios.get(fullURL)
+    .then((response) => {
+      console.log(response)
+      console.log(response.data)
+      assignments_array = response.data;
+      displayAssignments();
+      
+     
+    })
+    .catch((error) => console.error("Error fetching classes:", error));
+}
+
+
+function displayAssignments() {
+  const assignments_container = document.querySelector(".assignments-container");
+  assignments_container.innerHTML = "";
+
+  assignments_array.forEach((assignment_obj) => {
+    const assignment_div = document.createElement("div");
+    assignment_div.classList.add("assignments_child");
+
+    
+    assignment_div.innerHTML = `
+            <div class="book-container">
+                <img src="../assets/book.svg" alt="" class="google-container">
+            </div>
+            <p>${assignment_obj.title}</p>
+            <span class="date">${assignment_obj.due_date}</span>
+    `;
+    
+    classContainer.appendChild(classDiv);
+  })
+
+}
+}
 
 
 
