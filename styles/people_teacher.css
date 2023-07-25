@@ -6,8 +6,8 @@
 }
 
 .main{
-    padding: 0 24px;
-    margin: 0 330px;
+    padding: 0 35px;
+    margin: 0 305px;
     display: flex;
     flex-flow: column wrap;
     color: rgba(0,0,0,.87);
@@ -36,6 +36,17 @@
     line-height: 2.5rem;
     justify-content: space-between;
     margin-bottom: 0.25rem;
+}
+
+.teachers > .head > .buttom{
+    padding: 0.5rem 1.5rem 0 0;
+    margin-bottom: -0.25rem;
+}
+
+.teachers i{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 .teachers > .body{
@@ -76,7 +87,7 @@
     color: #3c4043;
 }  
 
-.classmates > .head{
+.students > .head{
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -84,10 +95,10 @@
     margin-bottom: 0.25rem;
     padding-left: 1rem;
     height: 4.5rem;
-    border-bottom: 1px solid rgb(95,99,104);
+    border-bottom: 1px solid rgb(95,99,104);     
 }
 
-.classmates h2{
+.students h2{
     color: rgb(32,33,36);
     fill: rgb(32,33,36);
     font-size: 2rem;
@@ -97,20 +108,20 @@
     margin-bottom: 0.25rem;
 }
 
-.classmates > .body{
+.students > .body{
     color: rgba(0,0,0,.87);
     font-size: 0.8125rem;
     font-weight: 400;
     line-height: 1.25rem;
 }
 
-.classmates > .body> .student{
+.students > .body> .student{
     height: 3.75rem;
     padding: 0.5rem;
     border-bottom: 0.0625rem solid #e0e0e0;
 }
 
-.classmates > .body> .student > .profile{
+.students > .body> .student > .profile{
     padding: 0 0.5rem;
     text-align: center;
     
@@ -119,11 +130,11 @@
     vertical-align: middle;
 }
 
-.classmates > .body> .student .profile_image{
+.students > .body> .student .profile_image{
     border-radius: 50px;
 }
 
-.classmates > .body> .student > .name{
+.students > .body> .student > .name{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -135,3 +146,70 @@
     line-height: 1.25rem;
     color: #3c4043;
 }  
+
+.students > .body> .draw-body{
+    color: rgba(0,0,0,.87);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    display: flex;
+    justify-content: center;
+}
+
+.students > .body > .draw-body > .draw{
+    width: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.students > .body > .draw-body > .draw> svg{
+    height: 8.4375rem;
+    margin-top: 6.25rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.students > .body > .draw-body > .draw> p{
+    letter-spacing: .01785714em;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: #3c4043;
+    margin-top:20px;
+}
+
+.students > .body > .draw-body > .draw> button{
+    font-size: .875rem;
+    font-weight: 500;
+    text-transform: none;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    min-width: 64px;
+    border: none;
+    outline: none;
+    line-height: inherit;
+    user-select: none;
+    overflow: visible;
+    vertical-align: middle;
+    background: transparent;
+    top: 50%;
+    height: 48px;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.students > .body > .draw-body > .draw> button > span{
+    color: #566b8f;
+    margin-top: 20px;
+    margin-right: 4px;
+}
