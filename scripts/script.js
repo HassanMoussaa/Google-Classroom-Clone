@@ -588,6 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // stream page teacher student
+
 pages.page_teacher_stream = function () {
   const urlParams = new URLSearchParams(window.location.search);
   const classId = urlParams.get("class_id");
@@ -637,22 +638,27 @@ pages.page_teacher_stream = function () {
     });
   }
 
-  // Call the function once on page load to display the initial stream data
-  refreshStreamData();
+ document.addEventListener("DOMContentLoaded", refreshStreamData());
+    const announcementForm = document.getElementById("announcement-form");
 
-  const announcementForm = document.getElementById("announcement-form");
+    announcementForm.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-  announcementForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const formData = new FormData(announcementForm);
-    const user_id = window.localStorage.getItem("id");
-    const apiEndpoint = `add_announcement.php?id=${user_id}&classroom_id=${classId}`;
-    const fullURL = this.base_url + apiEndpoint;
-
+      const textAria = document.getElementById("announcement-content").value;
+      const user_id = window.localStorage.getItem("user_id");
+      const class_id = window.localStorage.getItem("class_id");
+      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+      const apiUrl = 'http://example.com/api/add_announcement.php';
+      const fullURL = proxyUrl + apiUrl;
+      console.log(textAria, user_id, class_id)
+      const requestData = {
+      textAria,
+      classId,
+      user_id,
+    };
     // Send the POST request to the server to add the announcement
     axios
-      .post(fullURL, formData)
+      .post(fullURL, requestData)
       .then((response) => {
         // Handle the response, e.g., show a success message, update the UI, etc.
         console.log("Announcement added successfully:", response.data);
