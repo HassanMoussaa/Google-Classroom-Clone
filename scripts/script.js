@@ -478,7 +478,31 @@ pages.page_teacher_index = function () {
       classContainer.appendChild(classDiv);
     })
   }
+
+   //work for add class by teacher
+
+     document.addEventListener("DOMContentLoaded", () => {
+  const popupFormContainer = document.getElementById('popup-form-container');
+  const addClassForm = document.getElementById('add-class-form');
+  const addButton = document.querySelector('.add-container img');
+  const cancelButton = document.getElementById('cancel-btn');
+
+  addButton.addEventListener('click', () => {
+    popupFormContainer.style.display = 'block';
+  });
+
+  cancelButton.addEventListener('click', () => {
+    popupFormContainer.style.display = 'none';
+  });
+});
+
+
+
+
+
 }
+
+
 
 
 

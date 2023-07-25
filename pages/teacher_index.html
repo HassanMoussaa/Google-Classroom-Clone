@@ -66,6 +66,29 @@
       </div>
     </section>
 
+    <!-- Popup Form for Adding New Class -->
+    <div class="popup-form-container" id="popup-form-container">
+      <div class="popup-form">
+        <h2>Add New Class</h2>
+        <form id="add-class-form">
+          <label for="class-name">Name:</label>
+          <input type="text" id="class-name" required />
+
+          <label for="class-subject">Subject:</label>
+          <input type="text" id="class-subject" required />
+
+          <label for="class-section">Section:</label>
+          <input type="text" id="class-section" required />
+
+          <label for="class-room">Room:</label>
+          <input type="text" id="class-room" required />
+
+          <button type="submit">Add Class</button>
+          <button type="button" id="cancel-btn">Cancel</button>
+        </form>
+      </div>
+    </div>
+
     <script src="../scripts/script.js"></script>
     <script>
       pages.loadFor("teacher_index");
