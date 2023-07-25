@@ -1,0 +1,446 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+    color:  rgb(32,33,36);
+  }
+
+.assignment{
+    line-height: 1.75rem;
+    font-size: 2rem;
+    letter-spacing: 0;
+    font-weight: 400;
+    flex-grow: 1;
+    min-width: 0;
+    padding: 0.25rem;
+    padding-left: 0.75rem;
+}
+
+.svg_class{
+    color: white;
+    fill: white;
+}
+
+.close_btn{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.assignment-instructor{
+    border: none;
+    background-color: transparent;
+    color: rgb(32,33,36);
+    text-align: left;
+    vertical-align: top;
+    font-size: 1rem;
+    resize: none;
+  outline: none; 
+  overflow-y: auto
+}
+
+.assignment-instructor :focus{
+
+}
+
+.add-topic-modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.356);
+    z-index: 9999;
+}
+
+.add-topic-modal.hide {
+    display: none;
+}
+
+.add-topic-modal.show {
+    position: fixed;
+}
+
+.add-topic-modal .box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 270px;
+    padding: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    background-color: white;
+}
+
+.add-topic-modal input {
+    padding: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+    font-size: 1rem;
+    background-color: #cccccc5e;
+    transition: all 0.15s linear;
+    -webkit-transition: all 0.15s linear;
+    -moz-transition: all 0.15s linear;
+    -ms-transition: all 0.15s linear;
+    -o-transition: all 0.15s linear;
+}
+.add-topic-modal input:focus {
+    border-bottom: 3px solid #007b83;
+}
+
+.add-topic-modal .box .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 0.875rem;
+    margin-top: 20px;
+}
+
+.add-topic-modal button {
+    padding: 7px 10px;
+    border: none;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    background-color: transparent;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+.add-topic-modal button:first-of-type:hover {
+    background-color: #7373733b;
+}
+.add-topic-modal button:last-of-type {
+    color: #007b83;
+}
+
+
+.modal-assignment {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+    overflow: hidden;
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -ms-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+}
+
+.modal-assignment.hide {
+    display: none;
+}
+
+.modal-assignment-header {
+    padding: 10px 15px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal-assignment-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.modal-assignment-header-left > div:not(:last-child) {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.assign-button button {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    background-color: #f8f9fa;
+    color: #6e6e6e;
+    font-size: 0.9375rem;
+    font-weight: bold;
+}
+
+.assign-button button.active {
+    background-color: rgb(32,33,36);
+    color: white;
+}
+
+.modal-assignment-bottom {
+    display: flex;
+    height: 100%;
+}
+
+.modal-assignment-main {
+    width: 100%;
+    padding: 30px;
+    background-color: #f8f9fa;
+}
+
+.modal-assignment-attachments,
+.modal-assignment-input {
+    background-color: white;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.modal-assignment-input {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-assignment-input .assignment-title,
+.modal-assignment-input .text-input {
+    padding: 20px 15px;
+    background-color: #f8f9fa;
+    outline: none;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+    font-size: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+#editor {
+    padding: 0;
+    min-height: 100px;
+}
+
+.toolbar {
+    border: none;    
+}
+
+.toolbar button {
+    border: none;  
+    background-color: transparent;  
+    cursor: pointer;
+}
+
+.toolbar i {
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.modal-assignment-attachments {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.modal-assignment-attachments .attachments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.modal-assignment-attachments .attachments > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-assignment-attachments .attachments > div .icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor: pointer;
+}
+
+.assignment-sidebar {
+    width: 450px;
+    z-index: 99999 !important;
+    overflow: hidden !important;
+    background-color: white;
+    padding: 30px;
+    overflow: auto;
+}
+
+.assignment-sidebar > div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+.dropdowns {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+.dropdown-menu {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    max-height: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.dropdown-item {
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-toggle {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px;
+    z-index: 1;
+    cursor: pointer;
+    width: 90%;
+}
+
+.dropdown-menu label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.dropdown-title {
+    margin-bottom: 10px;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item label {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.dropdown-item input {
+    margin-right: 15px;
+    width: 18px;
+    height: 18px;
+}
+
+.dropdown-toggle {
+    padding: 10px;
+    background-color: #cccccc41;
+    color: #6e6e6e;
+    font-size: 1rem;
+    width: 90%;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.due-date-section, .due-time-section{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.due-date-section input, .due-time-section input {
+    background-color: #cccccc41;
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
