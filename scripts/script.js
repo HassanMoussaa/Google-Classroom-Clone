@@ -396,6 +396,7 @@ pages.page_teacher_index = function () {
 
   let classesArray = [];
   const user_id = window.localStorage.getItem('id');
+  const class_name = window.localStorage.getItem('name');
   const apiEndpoint = `get_teacher_classes.php?id=${user_id}`;
   const fullURL = this.base_url + apiEndpoint;
 
@@ -429,7 +430,8 @@ pages.page_teacher_index = function () {
           </div>
         </div>
       `;
-
+      const class_name = classObj.name;
+      localStorage.setItem("className", class_name);
       classDiv.addEventListener("click", () => {
         // the URL for the stream page, passing the class ID as a parameter
         const streamPageURL = `teacher_stream.html?class_id=${classObj.id}`;
@@ -449,8 +451,9 @@ pages.page_teacher_stream = function () {
  
   const urlParams = new URLSearchParams(window.location.search);
   const classId = urlParams.get("class_id");
+  const className = urlParams.get("className");
   console.log(classId)
-
+  console.log(className)
   const apiEndpoint = `get_thread.php?id=${classId}`;
   const fullURL = this.base_url + apiEndpoint;
 
