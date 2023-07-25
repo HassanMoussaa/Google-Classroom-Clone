@@ -281,9 +281,9 @@ pages.page_stream = function () {
  
   const urlParams = new URLSearchParams(window.location.search);
   const classId = urlParams.get("class_id");
+  console.log(classId)
 
-
-  const apiEndpoint = `get_thread.php?class_id=${classId}`;
+  const apiEndpoint = `get_thread.php?id=${classId}`;
   const fullURL = this.base_url + apiEndpoint;
 
  
@@ -292,6 +292,7 @@ pages.page_stream = function () {
     .then((response) => {
       console.log(response);
       const streamDataArray = response.data;
+       console.log(streamDataArray)
       displayStreamData(streamDataArray);
     })
     .catch((error) => console.error("Error fetching stream data:", error));
