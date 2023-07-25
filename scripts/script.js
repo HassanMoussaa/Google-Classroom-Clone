@@ -245,9 +245,7 @@ function displayClasses() {
     const classDiv = document.createElement("div");
     classDiv.classList.add("class");
 
-    // const classHeader = document.createElement("div");
-    // classHeader.classList.add("class-header");
-
+    
     classDiv.innerHTML = `
     <div class="class-header"> 
       <img class="image-overlay" src="../assets/flowers.jpg" alt="" />
@@ -260,12 +258,20 @@ function displayClasses() {
       </div>
     `;
 
-    // classDiv.appendChild(classHeader);
+
+
+    classDiv.addEventListener("click", () => {
+      // the URL for the stream page, passing the class ID as a parameter
+      const streamPageURL = `stream.html?class_id=${classObj.id}`;
+
+      //  to the stream page
+      window.location.href = streamPageURL;
+    });
+    
     classContainer.appendChild(classDiv);
   })
 
 }
-
 
 
 
