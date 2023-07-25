@@ -160,39 +160,46 @@ pages.page_code=function(){
 
 
 pages.page_signin = function () {
+  const btn = document.getElementById("btn-signin");
+  let err = document.getElementById("error");
 
-    const btn = document.getElementById("btn-signin")
-    let err = document.getElementById("error")
+  btn.addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    btn.addEventListener("click", () =>{
-        const email = document.getElementById("email").value
-        const password = document.getElementById("password").value
+    data = new FormData();
+    data.append("input", email);
+    data.append("password", password);
 
-        data = new FormData();
-        data.append("input",email)
-        data.append("password",password)
+    axios.post(`${this.base_url}sign_in.php`, data)
+      .then((response) => {
+        console.log(response.data);
+        if (
+          response.data.status ==
+            "Email/Phone number and/or password is incorrect" ||
+          response.data.status == "Email/Phone number not found"
+        ) {
+          err.innerText = "Incorrect credentials";
+        } else {
+          err.innerText = "";
 
-        axios.post(`${this.base_url}sign_in.php`,data)
-        .then((response) => {
-         console.log( response.data);
-         if(response.data.status=="Email/Phone number and/or password is incorrect" || response.data.status=="Email/Phone number not found")
-          err.innerText="incorrect credentials"
-          else{
-            err.innerText=""
-            window.localStorage.setItem(
-              'id',response.data.id
-            )
-            window.localStorage.setItem(
-              'user_type_id',response.data.user_type_id
-            )
-            window.location.href="../pages/index.html"
-         }
-         })
+          // Store user_id and user_type_id in local storage
+          window.localStorage.setItem("id", response.data.id);
+          const userType = response.data.user_type_id; 
+          window.localStorage.setItem("user_type_id", userType);
+          console.log("User Type: ", userType);
 
-  
-
-    })
-}
+          // Redirect to the appropriate index page based on user_type_id
+          if (userType === 2) {
+            console.log("User Type: ", userType);
+            window.location.href = "../pages/index.html";
+          } else if (userType === 1) {
+            window.location.href = "../pages/teacher_index.html";
+          }
+        }
+      });
+  });
+};
 
 
 
