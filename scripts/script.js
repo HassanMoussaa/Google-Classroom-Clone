@@ -446,58 +446,88 @@ pages.page_teacher_index = function () {
 
 
 
-// stream page teacher student 
+// stream page teacher student
 pages.page_teacher_stream = function () {
- 
   const urlParams = new URLSearchParams(window.location.search);
   const classId = urlParams.get("class_id");
   const className = urlParams.get("className");
-  console.log(classId)
-  console.log(className)
+  console.log(classId);
+  console.log(className);
   const apiEndpoint = `get_thread.php?id=${classId}`;
   const fullURL = this.base_url + apiEndpoint;
 
- 
-  axios
-    .get(fullURL)
-    .then((response) => {
-      console.log(response);
-      const streamDataArray = response.data;
-       console.log(streamDataArray)
-      displayStreamData(streamDataArray);
-    })
-    .catch((error) => console.error("Error fetching stream data:", error));
-};
+  // Function to fetch and display the stream data
+  function refreshStreamData() {
+    axios
+      .get(fullURL)
+      .then((response) => {
+        console.log(response);
+        const streamDataArray = response.data;
+        console.log(streamDataArray);
+        displayStreamData(streamDataArray);
+      })
+      .catch((error) => console.error("Error fetching stream data:", error));
+  }
 
-function displayStreamData(streamDataArray) {
-  const streamContainer = document.getElementById("stream-container");
-  streamContainer.innerHTML = "";
+  // Function to display the stream data
+  function displayStreamData(streamDataArray) {
+    const streamContainer = document.getElementById("stream-container");
+    streamContainer.innerHTML = "";
 
-  streamDataArray.forEach((streamData) => {
-    // Create elements to display the stream data
-    const streamDiv = document.createElement("div");
-    streamDiv.classList.add("stream-item");
+    streamDataArray.forEach((streamData) => {
+      // Create elements to display the stream data
+      const streamDiv = document.createElement("div");
+      streamDiv.classList.add("stream-item");
 
-    const postTitle = document.createElement("h2");
-    postTitle.textContent = streamData.Post;
+      const postTitle = document.createElement("h2");
+      postTitle.textContent = streamData.Post;
 
-    const postAuthor = document.createElement("p");
-    postAuthor.textContent = `${streamData.first_name} ${streamData.last_name}`;
+      const postAuthor = document.createElement("p");
+      postAuthor.textContent = `${streamData.first_name} ${streamData.last_name}`;
 
-    const postPublished = document.createElement("p");
-    postPublished.textContent = `Published: ${streamData.Published}`;
+      const postPublished = document.createElement("p");
+      postPublished.textContent = `Published: ${streamData.Published}`;
 
-    streamDiv.appendChild(postTitle);
-    streamDiv.appendChild(postAuthor);
-    streamDiv.appendChild(postPublished);
+      streamDiv.appendChild(postTitle);
+      streamDiv.appendChild(postAuthor);
+      streamDiv.appendChild(postPublished);
 
-    streamContainer.appendChild(streamDiv);
+      streamContainer.appendChild(streamDiv);
+    });
+  }
+
+  // Call the function once on page load to display the initial stream data
+  refreshStreamData();
+
+  const announcementForm = document.getElementById("announcement-form");
+
+  announcementForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(announcementForm);
+    const user_id = window.localStorage.getItem("id");
+    const apiEndpoint = `add_announcement.php?id=${user_id}&classroom_id=${classId}`;
+    const fullURL = this.base_url + apiEndpoint;
+
+    // Send the POST request to the server to add the announcement
+    axios
+      .post(fullURL, formData)
+      .then((response) => {
+        // Handle the response, e.g., show a success message, update the UI, etc.
+        console.log("Announcement added successfully:", response.data);
+
+        // Clear the form after successful submission
+        announcementForm.reset();
+
+        // After adding the announcement, refresh the stream data to show the updated list
+        refreshStreamData();
+      })
+      .catch((error) => {
+        // Handle errors, e.g., show an error message, etc.
+        console.error("Error adding announcement:", error);
+      });
   });
-}
-
-
-
-
+};
 
 
 
