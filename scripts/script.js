@@ -496,7 +496,51 @@ pages.page_teacher_index = function () {
   });
 });
 
+  const addClassForm = document.getElementById('add-class-form');
 
+  addClassForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    
+    const name = document.getElementById('class-name').value;
+    const subject = document.getElementById('class-subject').value;
+    const section = document.getElementById('class-section').value;
+    const room = document.getElementById('class-room').value;
+
+    
+    const user_id = window.localStorage.getItem('id'); 
+
+    
+    const apiEndpoint = 'add_class.php';
+    const fullURL = this.base_url + apiEndpoint;
+    const requestData = {
+      name,
+      subject,
+      section,
+      room,
+      user_id,
+    };
+
+    axios
+      .post(fullURL, requestData)
+      .then((response) => {
+      if (response.data.status === 'success') {
+       
+        console.log('Class added successfully');
+        
+        getClasses(); 
+       
+        document.getElementById('popup-form-container').style.display = 'none';
+      } else {
+        
+        console.error('Class addition failed:', response.data.message);
+      }
+    })
+    .catch((error) => {
+      console.error('Error adding class:', error);
+      console.error('An error occurred while adding the class. Please try again.');
+    });
+});
 
 
 
