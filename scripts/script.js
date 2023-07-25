@@ -34,7 +34,7 @@ pages.page_signup = function(){
         let answer
         const radio = document.getElementsByName("option")
         for(let i=0;i<2;i++){
-            if (radio[i].checked){
+            if (radio[i].checked) {
             return(radio[i].value)
         }
       }
@@ -185,9 +185,6 @@ pages.page_new_password = function(){
     }else err.innerText="passsword should have at least one digit, one lowercase letter, one uppercase letter, and be at least 8 characters long"
     })
 }
-
-
-
 pages.page_signin = function () {
 
     const btn = document.getElementById("btn-signin")
@@ -280,7 +277,7 @@ function displayClasses() {
       <img class="image-overlay" src="../assets/flowers.jpg" alt="" />
       <div class="text-overlay">
         <p class="title">${classObj.name}</p>
-        <p class="section">${classObj.section}</p>
+        <p class="subtitle">${classObj.section}</p>
         <p class="subject">${classObj.subject}</p>
         <p class="room">${classObj.room}</p>
       </div>

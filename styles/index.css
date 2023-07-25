@@ -252,8 +252,25 @@ hr {
   color: white;
   position: absolute;
   font-size: 2rem;
-  left: 0;
-  top: 0;
+  left: 20px;
+  top: 20px;
   z-index: 5;
-  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.subtitle {
+  color: white;
+  position: absolute;
+  font-size: 2rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  left: 20px;
+  top: 60px;
+  z-index: 5;
+}
+.title:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.subtitle:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
