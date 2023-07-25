@@ -20,6 +20,12 @@
   height: 20vh;
   margin-left: 20%;
 }
+.nav-middle-teacher-class {
+  display: flex;
+  width: 60%;
+  height: 20vh;
+  margin-left: 2%;
+}
 .middle-title {
   display: flex;
   font-size: large;

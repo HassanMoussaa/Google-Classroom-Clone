@@ -361,7 +361,7 @@ pages.loadFor = (page) => {
     eval("pages.page_" + page + "();")
 }
 
-pages_.page_classwork = function(){
+pages.page_classwork = function(){
 
   document.addEventListener("DOMContentLoaded", getClasses);
 
@@ -408,6 +408,11 @@ function displayAssignments() {
 }
 }
 
+pages.page_teacher_classwork = function(){
+
+  
+
+}
 
 
 

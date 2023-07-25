@@ -1,0 +1,21 @@
+.big-plus{
+    scale: 0.2;
+}
+.create{
+    
+    font-size: x-large;
+    margin-top: 2%;
+    border: none;
+    margin-left: 20%;
+    outline: none;
+    color: white;
+    width: 10%;
+    padding: 1rem 0.2rem;
+    background-color: var(--blue);
+    border-radius: 30px;
+    box-shadow: 5px 2px 5px #aaaaaa;
+    
+}
+.create:hover{
+    background-color: var(--darkblue);
+}
