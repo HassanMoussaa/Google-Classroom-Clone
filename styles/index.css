@@ -26,12 +26,12 @@ body {
 .nav-left {
   display: flex;
   width: 50%;
-  height: 20vh;
+  height: 10vh;
 }
 .nav-right {
   display: flex;
   width: 50%;
-  height: 20vh;
+  height: 10vh;
   justify-content: flex-end;
   margin-right: 2%;
   gap: 20px;
