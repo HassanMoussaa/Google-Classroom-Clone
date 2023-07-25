@@ -203,7 +203,7 @@ pages.page_signin = function () {
 
 
 
-
+// student work 
 
 pages.page_index=function (){
   const menuButton = document.getElementById('menu');
@@ -283,7 +283,7 @@ function displayClasses() {
 
 }
 
-// stream page work
+// stream page work student 
 pages.page_stream = function () {
  
   const urlParams = new URLSearchParams(window.location.search);
@@ -330,6 +330,101 @@ function displayStreamData(streamDataArray) {
     streamContainer.appendChild(streamDiv);
   });
 }
+
+
+
+// teacher index file work 
+
+pages.page_teacher_index=function (){
+  const menuButton = document.getElementById('menu');
+  const sideMenu = document.getElementById('side-menu');
+  menuButton.addEventListener('click', () => {
+  sideMenu.classList.toggle('active');
+});
+  document.addEventListener('click', (event) => {
+  const targetElement = event.target;
+  if (!sideMenu.contains(targetElement) && targetElement !== menuButton) {
+    sideMenu.classList.toggle('inactive');
+  }
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", getClasses);
+
+   let classesArray = [];
+   const user_id=window.localStorage.getItem('id')
+   const apiEndpoint = `get_student_classes.php?id=${user_id}`;
+   const fullURL = this.base_url + apiEndpoint;
+
+    // Get Classes
+    function getClasses() {
+      
+      axios.get(fullURL)
+    .then((response) => {
+      console.log(response)
+      console.log(response.data)
+      classesArray = response.data.classes;
+      displayClasses();
+      
+     
+    })
+    .catch((error) => console.error("Error fetching classes:", error));
+}
+
+
+function displayClasses() {
+  const classContainer = document.querySelector(".classes-container");
+  classContainer.innerHTML = "";
+
+  classesArray.forEach((classObj) => {
+    const classDiv = document.createElement("div");
+    classDiv.classList.add("class");
+
+    
+    classDiv.innerHTML = `
+    <div class="class-header"> 
+      <img class="image-overlay" src="../assets/flowers.jpg" alt="" />
+      <div class="text-overlay">
+        <p class="title">${classObj.name}</p>
+        <p class="section">${classObj.section}</p>
+        <p class="subject">${classObj.subject}</p>
+        <p class="room">${classObj.room}</p>
+      </div>
+      </div>
+    `;
+
+
+
+    classDiv.addEventListener("click", () => {
+      // the URL for the stream page, passing the class ID as a parameter
+      const streamPageURL = `stream.html?class_id=${classObj.id}`;
+      
+      //  to the stream page
+      window.location.href = streamPageURL;
+    });
+    
+    classContainer.appendChild(classDiv);
+  })
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
