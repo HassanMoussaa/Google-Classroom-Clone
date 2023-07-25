@@ -1,0 +1,137 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    padding: 0 24px;
+    margin: 0 305px;
+    display: flex;
+    flex-flow: column wrap;
+    color: rgba(0,0,0,.87);
+}
+
+.teachers{
+    margin-bottom: 2rem;
+}
+
+.teachers > .head{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+    padding-left: 1rem;
+    height: 4.5rem;
+    border-bottom: 1px solid rgb(95,99,104);
+}
+
+.teachers h2{
+    color: rgb(32,33,36);
+    fill: rgb(32,33,36);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.teachers > .body{
+    color: rgba(0,0,0,.87);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+}
+
+.teachers > .body> .teacher{
+    height: 3.75rem;
+    padding: 0.5rem;
+}
+
+.teachers > .body> .teacher > .profile{
+    padding: 0 0.5rem;
+    text-align: center;
+    
+    max-height: 75px;
+    max-width: 75px;
+    vertical-align: middle;
+}
+
+.teachers > .body> .teacher .profile_image{
+    border-radius: 50px;
+}
+
+.teachers > .body> .teacher > .name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 0.5rem;
+    max-width: 30rem;
+    letter-spacing: .01785714em;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: #3c4043;
+}  
+
+.classmates > .head{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+    padding-left: 1rem;
+    height: 4.5rem;
+    border-bottom: 1px solid rgb(95,99,104);
+}
+
+.classmates h2{
+    color: rgb(32,33,36);
+    fill: rgb(32,33,36);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.classmates > .body{
+    color: rgba(0,0,0,.87);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+}
+
+.classmates > .body> .student{
+    height: 3.75rem;
+    padding: 0.5rem;
+    border-bottom: 0.0625rem solid #e0e0e0;
+}
+
+.classmates > .body> .student > .profile{
+    padding: 0 0.5rem;
+    text-align: center;
+    
+    max-height: 75px;
+    max-width: 75px;
+    vertical-align: middle;
+}
+
+.classmates > .body> .student .profile_image{
+    border-radius: 50px;
+}
+
+.classmates > .body> .student > .name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 0.5rem;
+    max-width: 30rem;
+    letter-spacing: .01785714em;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: #3c4043;
+}  
