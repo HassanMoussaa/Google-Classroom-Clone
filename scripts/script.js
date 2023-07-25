@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", getClasses);
     .then((response) => {
       console.log(response)
       console.log(response.data)
-      classesArray = response.data.classes;
+      classesArray = response.data;
       displayClasses();
       
      
