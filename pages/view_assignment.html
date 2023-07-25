@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/view_assignment.css">
+    <title>Assignment Details</title>
+</head>
+<body>
+    <div class="form">
+        <div class="secion">
+            <div class="left_section">
+                <div class="header">
+                    <div class="left_header_container">
+                        <div class="section_header">
+                            <div class="image" style="background-color: rgb(32,33,36);">
+                                <svg focusable="false" width="24" height="24" viewBox="0 0 24 24" class="svg_class " style="background-color: rgb(32,33,36);">
+                                    <path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7z"></path>
+                                    <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04a2.008 2.008 0 0 0-1.44 1.19c-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="assignment_title">Google Class Clone</div>
+                        </div>
+                    </div>
+                    <div class="section_header_details">
+                        <div class="post_group">
+                            <div class="post_details">
+                            <div class="teacher_name">Omar Krayyem</div>
+                            <div class="post_timestamp">Jul 26</div>
+                            </div>
+                            <div class="due_date">Due 10:00 AM</div>
+                        </div>
+                        <div class="line_box">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section_body">
+                    <div class="assignment_inst">Instructions:<br>
+                      1- Instructions<br>
+                      2- Instructions<br>
+                      2- Instructions<br>
+                    </div>
+                </div>
+            </div>
+            <div class="right_section">
+                <div class="Assignment">
+                    <div class="right_section_header">
+                        <div>Your Work</div>
+                        <div class="assignment_status">Assigned</div>
+                    </div>
+                    <div class="buttons">
+                        <button id="uploadbtn" class="upload"> <img src="/front-end/images/plus.png"> Add or create</button>
+                        <button class="submit">Turn in</button>
+                    </div>
+                </div>
+                <div class="message_section">
+                    <div class="message_header">
+                        <img src="../assets/profile.png" style="border-radius: 50%;">
+                        <div>Private comments</div>
+                    </div>
+                    <div class="add_comment">Add comment to (teacher name)</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="upload_popup" class="upload_popup">
+          <div class="upload_files_container">
+              <div class="container">
+                <div class="container_title">
+                  <img class="drive-logo" src="../assets/google.svg" alt="google drive">
+                  <div class="title">Insert files using Google Drive</div>
+                </div>
+                <img id="closebtn" class="close_btn" src="../assets/Exit.jpeg" alt="">
+              </div>
+              <div class="container_navigation">
+                <div class="nav_item">
+                  <p>Recent</p>
+                </div>
+                <div class="nav_item item_selected">
+                  <p>Upload</p>
+                </div>
+                <div class="nav_item">
+                  <p>My Drive</p>
+                </div>
+                <div class="nav_item">
+                  <p>Starred</p>
+                </div>
+                <div class="nav_item">
+                  <p>Shared with me</p>
+                </div>
+              </div>
+              <div class="display_files">
+                <img src="https://ssl.gstatic.com/docs/picker/images/upload_background.png">
+              </div>
+              <div class="container_footer">
+                <input type="file" name="upload_file[]" id="upload_file" multiple="multiple" class="form-control" hidden>
+                <label class="upload_label" for="upload_file">Browse</label>
+                <p>or drag a file here</p>
+              </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
