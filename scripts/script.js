@@ -263,7 +263,7 @@ function displayClasses() {
     classDiv.addEventListener("click", () => {
       // the URL for the stream page, passing the class ID as a parameter
       const streamPageURL = `stream.html?class_id=${classObj.id}`;
-
+      
       //  to the stream page
       window.location.href = streamPageURL;
     });
@@ -274,13 +274,62 @@ function displayClasses() {
 }
 
 
-
-
-
-
-
-
 }
+
+// stream page work
+pages.page_stream = function () {
+ 
+  const urlParams = new URLSearchParams(window.location.search);
+  const classId = urlParams.get("class_id");
+
+
+  const apiEndpoint = `get_thread.php?class_id=${classId}`;
+  const fullURL = this.base_url + apiEndpoint;
+
+ 
+  axios
+    .get(fullURL)
+    .then((response) => {
+      console.log(response);
+      const streamDataArray = response.data;
+      displayStreamData(streamDataArray);
+    })
+    .catch((error) => console.error("Error fetching stream data:", error));
+};
+
+function displayStreamData(streamDataArray) {
+  const streamContainer = document.getElementById("stream-container");
+  streamContainer.innerHTML = "";
+
+  streamDataArray.forEach((streamData) => {
+    // Create elements to display the stream data
+    const streamDiv = document.createElement("div");
+    streamDiv.classList.add("stream-item");
+
+    const postTitle = document.createElement("h2");
+    postTitle.textContent = streamData.Post;
+
+    const postAuthor = document.createElement("p");
+    postAuthor.textContent = `${streamData.first_name} ${streamData.last_name}`;
+
+    const postPublished = document.createElement("p");
+    postPublished.textContent = `Published: ${streamData.Published}`;
+
+    streamDiv.appendChild(postTitle);
+    streamDiv.appendChild(postAuthor);
+    streamDiv.appendChild(postPublished);
+
+    streamContainer.appendChild(streamDiv);
+  });
+}
+
+
+
+
+
+
+
+
 pages.loadFor = (page) => {
     eval("pages.page_" + page + "();")
 }
