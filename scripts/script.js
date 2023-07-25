@@ -34,7 +34,7 @@ pages.page_signup = function(){
         let answer
         const radio = document.getElementsByName("option")
         for(let i=0;i<2;i++){
-            if (radio[i].checked){
+            if (radio[i].checked) {
             return(radio[i].value)
         }
       }
@@ -145,9 +145,10 @@ pages.page_code=function(){
     // data.append("code",code)
     axios.post(`${this.base_url}validate_code.php`,data)
     .then((response)=>{
-      if(response.data.status=="success")
-      err.innerText=response.data.password
-      else
+      if(response.data.status=="success"){
+      window.localStorage.setItem("user_id",response.data.user_id)
+      window.location.href="../pages/new_password.html" 
+      }else
       err.innerText="wrong code"
       
     })
@@ -155,10 +156,35 @@ pages.page_code=function(){
 
 
 }
+pages.page_new_password = function(){
+  function isValidPassword(password) {
+    const password_pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return password_pattern.test(password);
+  }
+  const btn = document.getElementById("btn-next")
+  const id =window.localStorage.getItem("user_id")
+  const err = document.getElementById("error")
+  btn.addEventListener("click",()=>{
+    const passsword = document.getElementById("password")
+    const confirm_passsword = document.getElementById("confirm_password")
 
-
-
-
+    if (isValidPassword(passsword.value) ){
+      if(passsword.value==confirm_passsword.value){
+        data = new FormData()
+        data.append("user_id",id)
+        data.append("new_password",passsword.value)
+        data.append("confirm_password",confirm_passsword.value)
+        axios.Post(`${this.base_url}password_reset.php`,data)
+        .then((response)=>{
+          if (response.data.status=="success"){
+          err.setAttribute("class","success")
+          err.innerText=`${response.data.message}`
+           }else err.innerText=`${response.data.message}`
+        })
+      }else err.innerText="passwords don't match"
+    }else err.innerText="passsword should have at least one digit, one lowercase letter, one uppercase letter, and be at least 8 characters long"
+    })
+}
 pages.page_signin = function () {
   const btn = document.getElementById("btn-signin");
   let err = document.getElementById("error");
@@ -258,7 +284,7 @@ function displayClasses() {
       <img class="image-overlay" src="../assets/flowers.jpg" alt="" />
       <div class="text-overlay">
         <p class="title">${classObj.name}</p>
-        <p class="section">${classObj.section}</p>
+        <p class="subtitle">${classObj.section}</p>
         <p class="subject">${classObj.subject}</p>
         <p class="room">${classObj.room}</p>
       </div>
