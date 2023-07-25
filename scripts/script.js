@@ -551,3 +551,19 @@ pages.loadFor = (page) => {
 
 
 
+
+
+pages.people_student = function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const classId = urlParams.get("class_id");
+
+    const apiEndpoint = `get_enrollment?id=${classId}`;
+    const fullURL = this.base_url + apiEndpoint;
+
+    axios
+    .get(fullURL)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => console.error("Error fetching stream data:", error));
+}
