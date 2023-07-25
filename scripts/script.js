@@ -376,6 +376,42 @@ function displayStreamData(streamDataArray) {
 
 
 
+// people section for student 
+pages.people_student = function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const classId = urlParams.get("class_id");
+
+    const apiEndpoint = `get_enrollment?id=${classId}`;
+    const fullURL = this.base_url + apiEndpoint;
+
+    axios
+    .get(fullURL)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => console.error("Error fetching stream data:", error));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // teacher index file work 
 
 pages.page_teacher_index = function () {
@@ -537,10 +573,6 @@ pages.page_teacher_stream = function () {
 
 
 
-
-
-
-
 pages.loadFor = (page) => {
     eval("pages.page_" + page + "();")
 }
@@ -553,17 +585,3 @@ pages.loadFor = (page) => {
 
 
 
-pages.people_student = function(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const classId = urlParams.get("class_id");
-
-    const apiEndpoint = `get_enrollment?id=${classId}`;
-    const fullURL = this.base_url + apiEndpoint;
-
-    axios
-    .get(fullURL)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => console.error("Error fetching stream data:", error));
-}
