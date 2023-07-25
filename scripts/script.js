@@ -331,6 +331,7 @@ pages.page_stream = function () {
  
   const urlParams = new URLSearchParams(window.location.search);
   const classId = urlParams.get("class_id");
+  window.localStorage.setItem("class_id",`${classId}`)
   console.log(classId)
 
   const apiEndpoint = `get_thread.php?id=${classId}`;
@@ -393,7 +394,53 @@ pages.page_people_student = function(){
 }
 
 
+pages.page_classwork = function(){
 
+  document.addEventListener("DOMContentLoaded", getClasses);
+
+   let assignments_array = [];
+   const classId=window.localStorage.getItem("class_id")
+   console.log(classId)
+   const apiEndpoint = `get_assignments.php?id=${classId}`;
+   const fullURL = this.base_url + apiEndpoint;
+
+    function getClasses() {
+      axios.get(fullURL)
+    .then((response) => {
+      console.log(response)
+      console.log(response.data)
+      assignments_array = response.data;
+      displayAssignments();
+      
+     
+    })
+    .catch((error) => console.error("Error fetching classes:", error));
+}
+
+
+function displayAssignments() {
+  const assignments_container = document.getElementById("assignments-container");
+  console.log(assignments_container)
+  assignments_container.innerHTML = "";
+
+  assignments_array.forEach((assignment_obj) => {
+    const assignment_div = document.createElement("div");
+    assignment_div.classList.add("assignments_child");
+
+    
+    assignment_div.innerHTML = `
+            <div class="book-container">
+                <img src="../assets/book.svg" alt="" class="google-container">
+            </div>
+            <p>${assignment_obj.title}</p>
+            <span class="date">${assignment_obj.due_date}</span>
+    `;
+    
+    assignments_container.appendChild(assignment_div);
+  })
+
+}
+}
 
 
 
@@ -480,8 +527,7 @@ pages.page_teacher_index = function () {
   }
 
    //work for add class by teacher
-
-     document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const popupFormContainer = document.getElementById('popup-form-container');
   const addClassForm = document.getElementById('add-class-form');
   const addButton = document.querySelector('.add-container img');
@@ -494,55 +540,46 @@ pages.page_teacher_index = function () {
   cancelButton.addEventListener('click', () => {
     popupFormContainer.style.display = 'none';
   });
-});
 
-  const addClassForm = document.getElementById('add-class-form');
+ 
 
   addClassForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    
     const name = document.getElementById('class-name').value;
     const subject = document.getElementById('class-subject').value;
     const section = document.getElementById('class-section').value;
     const room = document.getElementById('class-room').value;
 
-    
-    const user_id = window.localStorage.getItem('id'); 
+    const user_id = window.localStorage.getItem('id');
 
-    
     const apiEndpoint = 'add_class.php';
     const fullURL = this.base_url + apiEndpoint;
     const requestData = {
       name,
-      subject,
       section,
+      subject,
       room,
       user_id,
     };
 
-    axios
-      .post(fullURL, requestData)
+    axios.post(fullURL, requestData)
       .then((response) => {
-      if (response.data.status === 'success') {
-       
-        console.log('Class added successfully');
-        
-        getClasses(); 
-       
-        document.getElementById('popup-form-container').style.display = 'none';
-      } else {
-        
-        console.error('Class addition failed:', response.data.message);
-      }
-    })
-    .catch((error) => {
-      console.error('Error adding class:', error);
-      console.error('An error occurred while adding the class. Please try again.');
-    });
+        if (response.data.status === 'success') {
+          console.log('Class added successfully');
+          getClasses();
+          document.getElementById('popup-form-container').style.display = 'none';
+        } else {
+          console.error('Class addition failed:', response.data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error adding class:', error);
+        console.error('An error occurred while adding the class. Please try again.');
+        console.log(error.response.data);
+      });
+  });
 });
-
-
 
 }
 
