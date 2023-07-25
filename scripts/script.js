@@ -444,6 +444,54 @@ pages.page_teacher_index = function () {
 
 
 
+// stream page teacher student 
+pages.page_teacher_stream = function () {
+ 
+  const urlParams = new URLSearchParams(window.location.search);
+  const classId = urlParams.get("class_id");
+  console.log(classId)
+
+  const apiEndpoint = `get_thread.php?id=${classId}`;
+  const fullURL = this.base_url + apiEndpoint;
+
+ 
+  axios
+    .get(fullURL)
+    .then((response) => {
+      console.log(response);
+      const streamDataArray = response.data;
+       console.log(streamDataArray)
+      displayStreamData(streamDataArray);
+    })
+    .catch((error) => console.error("Error fetching stream data:", error));
+};
+
+function displayStreamData(streamDataArray) {
+  const streamContainer = document.getElementById("stream-container");
+  streamContainer.innerHTML = "";
+
+  streamDataArray.forEach((streamData) => {
+    // Create elements to display the stream data
+    const streamDiv = document.createElement("div");
+    streamDiv.classList.add("stream-item");
+
+    const postTitle = document.createElement("h2");
+    postTitle.textContent = streamData.Post;
+
+    const postAuthor = document.createElement("p");
+    postAuthor.textContent = `${streamData.first_name} ${streamData.last_name}`;
+
+    const postPublished = document.createElement("p");
+    postPublished.textContent = `Published: ${streamData.Published}`;
+
+    streamDiv.appendChild(postTitle);
+    streamDiv.appendChild(postAuthor);
+    streamDiv.appendChild(postPublished);
+
+    streamContainer.appendChild(streamDiv);
+  });
+}
+
 
 
 
