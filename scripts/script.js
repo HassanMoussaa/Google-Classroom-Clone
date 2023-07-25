@@ -552,7 +552,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const room = document.getElementById('class-room').value;
 
     const user_id = window.localStorage.getItem('id');
-
+    
     const apiEndpoint = 'add_class.php';
     const fullURL = this.base_url + apiEndpoint;
     const requestData = {
