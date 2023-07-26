@@ -415,7 +415,7 @@ pages.page_people_student = function () {
     .then((response) => {
       const classmatesSection = document.getElementById("classmates-section");
       const body = classmatesSection.querySelector(".body");
-      body.innerHTML = ""; // Clear any previous content
+      body.innerHTML = ""; 
 
       if (response.data && response.data.enrollments && response.data.enrollments.length > 0) {
         const enrollments = response.data.enrollments;
@@ -437,7 +437,7 @@ pages.page_people_student = function () {
           body.appendChild(studentDiv);
         });
       } else {
-        // Handle case where no students are found
+       
         const noStudentsDiv = document.createElement("div");
         noStudentsDiv.textContent = "No students found.";
         body.appendChild(noStudentsDiv);
@@ -587,9 +587,9 @@ pages.page_teacher_index = function () {
       const class_name = classObj.name;
       localStorage.setItem("className", class_name);
       classDiv.addEventListener("click", () => {
-        // the URL for the stream page, passing the class ID as a parameter
+        
         const streamPageURL = `teacher_stream.html?class_id=${classObj.id}`;
-        //  to the stream page
+       
         window.location.href = streamPageURL;
       });
 
@@ -727,21 +727,21 @@ pages.page_teacher_stream = function () {
       classId,
       user_id,
     };
-    // Send the POST request to the server to add the announcement
+    
     axios
       .post(fullURL, requestData)
       .then((response) => {
-        // Handle the response, e.g., show a success message, update the UI, etc.
+      
         console.log("Announcement added successfully:", response.data);
 
-        // Clear the form after successful submission
+        
         announcementForm.reset();
 
-        // After adding the announcement, refresh the stream data to show the updated list
+      
         refreshStreamData();
       })
       .catch((error) => {
-        // Handle errors, e.g., show an error message, etc.
+       
         console.error("Error adding announcement:", error);
       });
   });

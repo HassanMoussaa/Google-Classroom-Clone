@@ -208,7 +208,7 @@ hr {
   transition: 0.3s;
   cursor: pointer;
   width: 100%;
-  max-width: 300px; /* Limit the width of each class card */
+  max-width: 300px;
 }
 
 .class:hover {
