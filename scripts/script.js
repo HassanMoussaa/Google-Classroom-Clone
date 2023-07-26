@@ -732,28 +732,96 @@ pages.page_teacher_stream = function () {
 
 
 //script for profile :
-pages.page_profile = function(){
-  const btn = document.getElementById("edit")
-    const container = document.getElementById("profile_container")
-    container.innerHTML=' <button class="edit" id="edit">Edit</button>'
-    container.innerHTML=`
-      <div class="greet ">
-            <p>Welcome  <span>${window.localStorage.getItem("first_name")} ${window.localStorage.getItem("last_name")}<span></p>
-        </div>
-        <br><br>
-        <div class="email" id="email">
-            <p>Your email is <span> ${window.localStorage.getItem("email")} </span> </p>
-            <p>Your first name is <span> ${window.localStorage.getItem("first_name")} </span> </p>
-            <p>Your last name is <span> ${window.localStorage.getItem("last_name")} </span> </p>
-        </div>
-        <br><br>
-        <button class="edit" id="edit">Edit</button>
+pages.page_profile = function() {
+  const container = document.getElementById("profile_container");
+
+  // Create the elements for the content
+  const greetDiv = document.createElement("div");
+  greetDiv.className = "greet";
+  greetDiv.innerHTML = `
+    <p>Welcome <span>${window.localStorage.getItem("first_name")} ${window.localStorage.getItem("last_name")}</span></p>
+  `;
+
+  const emailDiv = document.createElement("div");
+  emailDiv.className = "email";
+  emailDiv.innerHTML = `
+    <p>Your email is <span>${window.localStorage.getItem("email")}</span></p>
+    <p>Your first name is <span>${window.localStorage.getItem("first_name")}</span></p>
+    <p>Your last name is <span>${window.localStorage.getItem("last_name")}</span></p>
+  `;
+
+  const editButton = document.createElement("button");
+  editButton.className = "edit";
+  editButton.textContent = "Edit";
+
+  // Append the elements to the container
+  container.innerHTML = ""; // Clear existing content
+  container.appendChild(greetDiv);
+  container.appendChild(document.createElement("br"));
+  container.appendChild(emailDiv);
+  container.appendChild(document.createElement("br"));
+  container.appendChild(editButton);
+
+  // Add event listener to the edit button
+  editButton.addEventListener("click", () => {
+    window.location.href = "edit_profile.html";
+  });
+};
+
+
+//for editing profile :
+pages.page_edit_profile = function(){
+document.addEventListener("DOMContentLoaded", () => {
+    const editProfileForm = document.getElementById("edit-profile-form");
+
+    editProfileForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
        
-    `
- btn.addEventListener("click",()=>{
-  window.location.href="edit_profile"
- }) 
+        const email = document.getElementById("email").value;
+        const firstName = document.getElementById("first-name").value;
+        const lastName = document.getElementById("last-name").value;
+        
+
+        
+        const requestData = {
+            id: window.localStorage.getItem("id"),
+            email,
+            first_name: firstName,
+            last_name: lastName,
+           
+        };
+
+        
+        const apiEndpoint = "update_user.php";
+        const fullURL = "http://localhost/Google-Classroom-Clone-BE/" + apiEndpoint;
+
+        axios
+            .post(fullURL, requestData)
+            .then((response) => {
+                if (response.data.status === "success") {
+                    
+                    console.log("Profile updated successfully");
+                    
+                    window.localStorage.setItem("email", email);
+                    window.localStorage.setItem("first_name", firstName);
+                    window.localStorage.setItem("last_name", lastName);
+                    
+                } else {
+                   
+                    console.error("Profile update failed:", response.data.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Error updating profile:", error);
+                console.error("An error occurred while updating the profile. Please try again.");
+            });
+    });
+});
+
+
 }
+
 
 
 

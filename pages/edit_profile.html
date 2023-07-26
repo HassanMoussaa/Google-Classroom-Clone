@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <!-- Create a form for editing profile information -->
+    <form id="edit-profile-form">
+      <!-- Add input fields for each editable field (email, first name, last name, phone number, etc.) -->
+      <!-- Use the "value" attribute to set the initial values based on the data stored in localStorage -->
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        id="email"
+        value="${window.localStorage.getItem('email')}"
+        required
+      />
+      <label for="first-name">First Name:</label>
+      <input
+        type="text"
+        id="first-name"
+        value="${window.localStorage.getItem('first_name')}"
+        required
+      />
+      <label for="last-name">Last Name:</label>
+      <input
+        type="text"
+        id="last-name"
+        value="${window.localStorage.getItem('last_name')}"
+        required
+      />
+      <!-- Add more fields for other editable information (e.g., phone number) -->
+
+      <!-- Add a button to submit the form -->
+      <button type="submit">Save Changes</button>
+    </form>
+
+    <script src="../scripts/script.js"></script>
+    <script>
+      pages.loadFor("edit_profile");
+    </script>
+  </body>
+</html>
