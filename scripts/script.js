@@ -9,6 +9,18 @@ pages.page_success = function(){
 
 }
 
+function handleRadioChange() {
+  let answer;
+  const radio = document.getElementsByName("option");
+  for (let i = 0; i < 2; i++) {
+    if (radio[i].checked) {
+      return radio[i].value;
+    }
+  }
+}
+
+
+
 pages.page_signup = function(){
     function isValidEmail(email) {
         const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -735,7 +747,7 @@ pages.page_teacher_stream = function () {
 pages.page_profile = function() {
   const container = document.getElementById("profile_container");
 
-  // Create the elements for the content
+  
   const greetDiv = document.createElement("div");
   greetDiv.className = "greet";
   greetDiv.innerHTML = `
@@ -754,15 +766,14 @@ pages.page_profile = function() {
   editButton.className = "edit";
   editButton.textContent = "Edit";
 
-  // Append the elements to the container
-  container.innerHTML = ""; // Clear existing content
+  
+  container.innerHTML = ""; 
   container.appendChild(greetDiv);
   container.appendChild(document.createElement("br"));
   container.appendChild(emailDiv);
   container.appendChild(document.createElement("br"));
   container.appendChild(editButton);
 
-  // Add event listener to the edit button
   editButton.addEventListener("click", () => {
     window.location.href = "edit_profile.html";
   });
@@ -770,57 +781,57 @@ pages.page_profile = function() {
 
 
 //for editing profile :
-pages.page_edit_profile = function(){
-document.addEventListener("DOMContentLoaded", () => {
+
+pages.page_edit_profile = function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const editProfileForm = document.getElementById("edit-profile-form");
 
     editProfileForm.addEventListener("submit", (event) => {
-        event.preventDefault();
+      event.preventDefault();
 
-       
-        const email = document.getElementById("email").value;
-        const firstName = document.getElementById("first-name").value;
-        const lastName = document.getElementById("last-name").value;
-        
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const firstName = document.getElementById("first-name").value;
+      const lastName = document.getElementById("last-name").value;
+      const phoneNumber = document.getElementById("phone-number").value;
 
-        
-        const requestData = {
-            id: window.localStorage.getItem("id"),
-            email,
-            first_name: firstName,
-            last_name: lastName,
-           
-        };
+      const requestData = {
+        id: window.localStorage.getItem("id"),
+        email,
+        password,
+        first_name: firstName,
+        last_name: lastName,
+        phone_number: phoneNumber,
+        image_path: "", 
+      };
 
-        
-        const apiEndpoint = "update_user.php";
-        const fullURL = "http://localhost/Google-Classroom-Clone-BE/" + apiEndpoint;
+      const apiEndpoint = "update_user.php";
+      const fullURL = "http://localhost/Google-Classroom-Clone-BE/" + apiEndpoint;
 
-        axios
-            .post(fullURL, requestData)
-            .then((response) => {
-                if (response.data.status === "success") {
-                    
-                    console.log("Profile updated successfully");
-                    
-                    window.localStorage.setItem("email", email);
-                    window.localStorage.setItem("first_name", firstName);
-                    window.localStorage.setItem("last_name", lastName);
-                    
-                } else {
-                   
-                    console.error("Profile update failed:", response.data.message);
-                }
-            })
-            .catch((error) => {
-                console.error("Error updating profile:", error);
-                console.error("An error occurred while updating the profile. Please try again.");
-            });
+      axios
+        .post(fullURL, requestData)
+        .then((response) => {
+          if (response.data.status === "success") {
+            console.log("Profile updated successfully");
+
+            
+            window.localStorage.setItem("email", email);
+            window.localStorage.setItem("first_name", firstName);
+            window.localStorage.setItem("last_name", lastName);
+            
+          } else {
+            console.error("Profile update failed:", response.data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error updating profile:", error);
+          console.error(
+            "An error occurred while updating the profile. Please try again!!"
+          );
+        });
     });
-});
-
-
-}
+  });
+};
 
 
 
