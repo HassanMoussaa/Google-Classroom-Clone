@@ -1,0 +1,46 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 1rem;
+  display: flex;
+  width: 90%;
+  height: auto;
+  padding: 5rem 3rem;
+  background-color: var(--grey);
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30%;
+}
+
+.greet {
+  color: white;
+  font-size: xx-large;
+}
+.email {
+  align-self: flex-start;
+  color: white;
+  font-size: xx-large;
+}
+.edit {
+  align-self: flex-end;
+  color: white;
+  width: 10%;
+  padding: 1rem 0.2rem;
+  background-color: var(--blue);
+  border-radius: 30px;
+  box-shadow: 5px 2px 5px #aaaaaa;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: x-large;
+}
+.edit:hover {
+  background-color: var(--darkblue);
+}
+span {
+  color: var(--blue);
+}
+p {
+  margin-top: 3%;
+}

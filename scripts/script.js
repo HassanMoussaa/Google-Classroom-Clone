@@ -244,6 +244,16 @@ pages.page_signin = function () {
           const userType = response.data.user_type_id; 
           window.localStorage.setItem("user_type_id", userType);
           console.log("User Type: ", userType);
+          window.localStorage.setItem(
+            'first_name',response.data.first_name
+          )
+          window.localStorage.setItem(
+            'last_name',response.data.last_name
+          )
+          window.localStorage.setItem(
+            'email',email
+          )
+          window.location.href="../pages/index.html"
 
           // Redirect to the appropriate index page based on user_type_id
           if (userType === 2) {
@@ -258,9 +268,12 @@ pages.page_signin = function () {
 };
 
 
-
 // student work 
 pages.page_index = function () {
+  const btn = document.getElementById("profile")
+  btn.addEventListener("click",()=>{
+    window.location.href="../pages/profile.html"
+  })
   const menuButton = document.getElementById('menu');
   const sideMenu = document.getElementById('side-menu');
   menuButton.addEventListener('click', () => {
@@ -378,20 +391,48 @@ function displayStreamData(streamDataArray) {
 
 
 // people section for student 
-pages.page_people_student = function(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const classId = urlParams.get("class_id");
+pages.page_people_student = function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const classId = urlParams.get("class_id");
 
-    const apiEndpoint = `get_enrollment?id=${classId}`;
-    const fullURL = this.base_url + apiEndpoint;
+  const apiEndpoint = `get_enrollment?id=${classId}`;
+  const fullURL = this.base_url + apiEndpoint;
 
-    axios
+  axios
     .get(fullURL)
     .then((response) => {
-      console.log(response);
+      const classmatesSection = document.getElementById("classmates-section");
+      const body = classmatesSection.querySelector(".body");
+      body.innerHTML = ""; // Clear any previous content
+
+      if (response.data && response.data.enrollments && response.data.enrollments.length > 0) {
+        const enrollments = response.data.enrollments;
+        enrollments.forEach((enrollment) => {
+          const studentDiv = document.createElement("div");
+          studentDiv.classList.add("student");
+
+          const profileImg = document.createElement("img");
+          profileImg.classList.add("profile_image");
+          profileImg.src = "../assets/profile.png";
+
+          const nameSpan = document.createElement("span");
+          nameSpan.classList.add("name");
+          nameSpan.textContent = `${enrollment.first_name} ${enrollment.last_name}`;
+
+          studentDiv.appendChild(profileImg);
+          studentDiv.appendChild(nameSpan);
+
+          body.appendChild(studentDiv);
+        });
+      } else {
+        // Handle case where no students are found
+        const noStudentsDiv = document.createElement("div");
+        noStudentsDiv.textContent = "No students found.";
+        body.appendChild(noStudentsDiv);
+      }
     })
-    .catch((error) => console.error("Error fetching stream data:", error));
-}
+    .catch((error) => console.error("Error fetching student data:", error));
+};
 
 
 pages.page_classwork = function(){
@@ -679,6 +720,40 @@ pages.page_teacher_stream = function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//script for profile :
+pages.page_profile = function(){
+  const btn = document.getElementById("edit")
+    const container = document.getElementById("profile_container")
+    container.innerHTML=' <button class="edit" id="edit">Edit</button>'
+    container.innerHTML=`
+      <div class="greet ">
+            <p>Welcome  <span>${window.localStorage.getItem("first_name")} ${window.localStorage.getItem("last_name")}<span></p>
+        </div>
+        <br><br>
+        <div class="email" id="email">
+            <p>Your email is <span> ${window.localStorage.getItem("email")} </span> </p>
+            <p>Your first name is <span> ${window.localStorage.getItem("first_name")} </span> </p>
+            <p>Your last name is <span> ${window.localStorage.getItem("last_name")} </span> </p>
+        </div>
+        <br><br>
+        <button class="edit" id="edit">Edit</button>
+       
+    `
+ btn.addEventListener("click",()=>{
+  window.location.href="edit_profile"
+ }) 
+}
 
 
 
