@@ -489,8 +489,26 @@ function displayAssignments() {
             <span class="date">${assignment_obj.due_date}</span>
     `;
     
+     assignment_div.addEventListener("click", () => {
+      navigateToViewAssignment(assignment_obj); 
+    });
+
+
     assignments_container.appendChild(assignment_div);
   })
+
+  function navigateToViewAssignment(assignment) {
+  
+  const viewAssignmentPageUrl = `view_assignment.html?id=${assignment.id}&title=${encodeURIComponent(assignment.title)}&due_date=${encodeURIComponent(assignment.due_date)}`;
+
+  window.location.href = viewAssignmentPageUrl;
+}
+
+
+
+
+
+
 
 }
 }
