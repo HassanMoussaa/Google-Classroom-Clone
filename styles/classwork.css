@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
 }
-.assignments-child {
+.assignments_child {
   display: flex;
   width: 70%;
   padding: 1rem 0.5rem;
@@ -13,7 +13,7 @@
   align-items: center;
   gap: 20px;
 }
-.assignments-child:hover {
+.assignments_child:hover {
   background-color: var(--grey);
 }
 .book-container {

@@ -55,7 +55,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
 }
 
 .stream-container {
@@ -116,4 +116,8 @@ a {
   background-color: #bbb;
   border-radius: 50%;
   margin-top: 0.5rem;
+}
+
+.wrapper {
+  margin: 0 5rem;
 }
